@@ -85,7 +85,7 @@ class DetectiveGameAPITester:
         
         return success
 
-    def test_question_character(self):
+    def test_question_character(self, question="Where were you at the time of the murder?"):
         """Test questioning a character"""
         if not self.case_id or not self.character_id:
             print("❌ Cannot test character questioning - no case or character ID")
@@ -99,15 +99,25 @@ class DetectiveGameAPITester:
             data={
                 "case_id": self.case_id,
                 "character_id": self.character_id,
-                "question": "Where were you at the time of the murder?"
+                "question": question
             }
         )
         
         if success:
             print(f"Character name: {response['character_name']}")
             print(f"Response: {response['response']}")
+            
+            # Check for new character discoveries
+            if response.get('new_characters_discovered'):
+                print(f"\n🔍 NEW CHARACTERS DISCOVERED: {len(response['new_characters_discovered'])}")
+                for discovery in response['new_characters_discovered']:
+                    print(f"  - {discovery['character']['name']} ({discovery['character']['description']})")
+                    print(f"    Discovered through: {discovery['discovered_through']}")
+                    print(f"    Context: {discovery['context']}")
+                    # Store the new character ID for further questioning
+                    return success, discovery['character']['id']
         
-        return success
+        return success, None
 
     def test_analyze_evidence(self):
         """Test analyzing evidence and theory"""
