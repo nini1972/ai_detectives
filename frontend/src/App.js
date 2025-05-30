@@ -355,10 +355,16 @@ function App() {
               🏠 New Case
             </button>
             <button
+              onClick={() => setShowSaveLoad(true)}
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+            >
+              💾 Save/Load Game
+            </button>
+            <button
               onClick={() => setShowContextPanel(!showContextPanel)}
               className={`font-bold py-2 px-4 rounded-lg transition-colors ${
                 showContextPanel 
-                  ? 'bg-green-600 hover:bg-green-700 text-white' 
+                  ? 'bg-blue-600 hover:bg-blue-700 text-white' 
                   : 'bg-blue-600 hover:bg-blue-700 text-white'
               }`}
             >
