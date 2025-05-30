@@ -36,3 +36,251 @@ Initial visual scenes count: 0
 🔍 Testing visual question 1: 'What exactly did you see that night?'
 
 🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Vivienne Beaumont
+Response: *Vivienne dabs at her temple with a silk handkerchief, her red lips curled into a faint, tremulous smile.*
+
+Mais, Detective, what a frightful business this is. Let me see… Last night, I was in the salon, as I said, hosting a rather lively poker game—Annette was there, along with Mr. Hadley and that Russian, Orlov. The clock struck two before we finally packed up. Annette did excuse herself for a moment—she claimed a headache, poor dear, and was gone perhaps fifteen minutes. But I never left the salon, as you’ll see from the steward, Giorgos; he refilled our drinks more than once.
+
+As for Lucien—mon dieu—I scarcely saw him all evening. He wasn’t in the mood for company, it seemed. Is it true he was clutching a cufflink? How ghastly. Please, Detective, do let me know if there’s anything else I can do. I adored Lucien… once, at least.
+
+🔍 NEW CHARACTERS DISCOVERED: 1
+  - Giorgos Markakis (A slim man in his early thirties, Giorgos stands at average height with olive skin, neatly combed black hair, and attentive dark eyes. His crisp steward’s uniform is always immaculate, and he moves with the precise, deferential manner expected of luxury service personnel. He is polite yet quietly reserved, quick with a respectful nod but slow to volunteer conversation.)
+    Discovered through: Vivienne Beaumont
+    Context: Giorgos; he refilled our drinks more than once during the poker game in the salon
+✅ New character discovered! Switching to question this character...
+
+🔍 Testing visual question 2: 'Describe what happened in detail'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Giorgos Markakis
+Response: Of course, Detective. I will describe the evening as I remember it.
+
+After dinner, Monsieur Duval and the others gathered in the main salon for poker—Madame Duval, Mademoiselle Beaumont, Mr. Hadley, and Mr. Orlov joined as well. I was responsible for serving drinks and anything else they required. The game was lively, with laughter, but also some tension—Monsieur Duval could be... demanding at times.
+
+I remained in the salon almost the entire night, except for brief moments to restock the bar in the pantry or fetch fresh ice. Several guests saw me throughout. I did not go to Monsieur Duval’s suite at any time; after the game broke up, I cleared glasses and made my final rounds with the steward from the upper deck, Andreas.
+
+If you need, you may speak to any of them—they will confirm I was present. I only wish I could offer more help.
+
+🔍 NEW CHARACTERS DISCOVERED: 1
+  - Andreas Vardalos (A lean man in his late twenties with olive skin, sharp cheekbones, and neatly parted chestnut hair. Andreas carries himself with the practiced discretion of a servant, but his quick brown eyes rarely miss a detail. He speaks softly, with a respectful but reserved demeanor, and his uniform is kept immaculate.)
+    Discovered through: Giorgos Markakis
+    Context: Andreas - worked with Giorgos making final rounds after the poker game broke up
+✅ New character discovered! Switching to question this character...
+
+🔍 Testing visual question 3: 'Tell me about the scene when you found the body'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Andreas Vardalos
+Response: *Andreas folds his hands neatly in his lap, eyes lowered respectfully.*  
+Of course, Detective. I… I did not find Monsieur Duval’s body myself. Early this morning, I was in the crew galley making tea—some of us had barely rested, after the late poker game. It was Mrs. Beaumont who raised the alarm. She seemed quite agitated, knocking at my shoulder as I passed in the corridor, saying Lucien would not answer her calls or the door. I fetched Captain Petropoulos at once, and together with Giorgos, we forced open the suite—since it was locked, you see.
+
+The sight inside… *he shakes his head slightly.* I kept to the doorway out of respect. The Captain approached the body. The room—it looked almost untouched, save for the chair, and that cufflink Monsieur Duval held so tightly. I had only tidied there yesterday evening—nothing seemed out of place, then.
+
+🔍 Testing visual question 4: 'What did the confrontation look like?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Andreas Vardalos
+Response: [Andreas Vardalos shifts almost imperceptibly, glancing at his hands before meeting your gaze, his voice quiet but steady.]
+
+Confrontation, sir? I wasn’t present for any argument myself—if you mean with Monsieur Duval. But I did sense... tension earlier that evening. Monsieur Duval was abrupt with me when I delivered his brandy. He barely looked up, only muttered about “incompetence.” Later, I heard raised voices from his suite just after midnight, as I passed down the corridor—could have been Madame Duval or perhaps Monsieur Hadley, though I can’t be sure.
+
+By the time my rounds were finished with Giorgos, the ship was calm. I didn’t see anyone enter or leave Monsieur Duval’s cabin. Forgive me if I seem uncertain; the guests sometimes quarrel, but what happened this time... it’s been unsettling for us all.
+
+🔍 Testing visual question 5: 'Can you describe what you witnessed?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Andreas Vardalos
+Response: (Andreas stands with his cap clutched in his hands, posture neat but eyes wary, voice low.)
+
+Certainly, sir. After the poker game ended, I assisted Mr. Giorgos with clearing the lounge. There were still glasses about from Monsieur Duval and the others—Mr. Hadley, Madame Beaumont, and Madame Duval. Madame Beaumont lingered, a touch unsteady… I helped her back to her cabin while Giorgos tidied up. She insisted she was fine but nearly dropped her purse in the corridor.
+
+I returned to the lounge, finished gathering the decanters, and rendezvoused with Giorgos—he’ll recall. After, I went straight to the crew quarters to set water for tea. I saw Antonis, the night porter, passing by—he might remember the time. I did not see Monsieur Duval again after midnight, nor anyone enter his suite while I was about. Sir, I wish I could be of more help.
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Andreas Vardalos testified: (Andreas stands with his cap clutched in his hands, posture neat but eye...
+  - Image URL: https://v3.fal.media/files/elephant/_ZXD-ldE9BOVDupjwiOuT.png
+  - Generated from: testimony
+  - Character involved: Andreas Vardalos
+✅ Visual scene generated from question 5!
+
+🔍 Testing visual question 6: 'What did you notice about the crime scene?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Andreas Vardalos
+Response: Andreas bows his head respectfully, his eyes never quite meeting yours. “To be honest, sir, I did not enter Monsieur Duval’s suite myself—only the captain and the ship’s doctor were permitted at first. But when I passed by after sunrise, before the commotion began, the corridor outside was silent. I did notice Mr. Hadley lingering nearby, which I thought strange at that hour.”
+
+He hesitates, glancing down at his immaculate cuffs. “About the scene—Giorgos later mentioned how untouched it looked. He said only the desk chair had been upturned and that Mr. Duval still grasped something in his hand—a cufflink, I believe. Everything else was in its place. Too much so, perhaps.”
+
+He lowers his voice. “Forgive me, but… I heard Madame Duval visited her husband quite late. She seemed very upset when I saw her retreating to her own cabin soon after midnight.”
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Andreas Vardalos testified: Andreas bows his head respectfully, his eyes never quite meeting yours. ...
+  - Image URL: https://v3.fal.media/files/koala/_IYp1H61HJ3Sqw8s5145h.png
+  - Generated from: testimony
+  - Character involved: Andreas Vardalos
+✅ Visual scene generated from question 6!
+
+🔍 Testing visual question 7: 'Tell me what you remember seeing'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Andreas Vardalos
+Response: (Andreas sits with shoulders straight, hands resting in his lap, eyes searching your face for cues.)
+
+Of course, sir. After midnight, I was mostly stationed in the upper lounge, cleaning up after the poker game. Mr. Duval left first—didn’t say much, seemed distracted. I helped Mr. Hadley fetch his coat, and I remember Madame Beaumont lingering by the grand piano, humming softly. Giorgos and I tended to the last few glasses and then escorted Mr. Papadakis, the guest from suite 11—he’d had far too much to drink.
+
+After that, I helped Giorgos check the corridors and saw Annette Duval leave her cabin briefly, rather upset… perhaps a quarrel? I headed to the crew mess—two or three stewards can confirm that—and I didn’t leave again until morning roll call.
+
+I… heard a rumor about Mr. Duval arguing with someone near his suite earlier, but I only caught raised voices—couldn’t see who. Does that help?
+
+🔍 NEW CHARACTERS DISCOVERED: 2
+  - Nikolaos Papadakis (A portly man in his mid-fifties with a bushy mustache, olive skin weathered by the Mediterranean sun, and thick, expressive eyebrows. Often seen in impeccably pressed linen suits, though his shirt is usually a bit rumpled by evening. Boisterous and quick to laughter, especially after a few drinks, but his jovial manner conceals a streak of pride and shrewdness.)
+    Discovered through: Andreas Vardalos
+    Context: Mr. Papadakis, the guest from suite 11—he'd had far too much to drink
+✅ New character discovered! Switching to question this character...
+
+🔍 Testing Get Final Case State...
+✅ Passed - Status: 200
+
+Final visual scenes count: 2
+New visual scenes generated: 2
+
+🔍 Testing Get Case Scenes...
+✅ Passed - Status: 200
+Retrieved 2 scenes from the gallery API
+
+Scene 1:
+  - Title: Scene: Testimony
+  - Description: Andreas Vardalos testified: (Andreas stands with his cap clutched in his hands, posture neat but eye...
+  - Generated from: testimony
+  - Character involved: Andreas Vardalos
+
+Scene 2:
+  - Title: Scene: Testimony
+  - Description: Andreas Vardalos testified: Andreas bows his head respectfully, his eyes never quite meeting yours. ...
+  - Generated from: testimony
+  - Character involved: Andreas Vardalos
+✅ VISUAL TESTIMONY SYSTEM TEST PASSED!
+The investigation generated 2 visual scenes from testimony
+
+==================================================
+TESTING DYNAMIC CHARACTER DISCOVERY
+==================================================
+
+🔍 Testing Get Initial Case State...
+✅ Passed - Status: 200
+Initial character count: 11
+
+🔍 Testing discovery question 1: 'Who else was around that evening?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Nikolaos Papadakis
+Response: Ah, my dear detective, such unfortunate business, eh? On this ship, it seems everyone becomes a little family—nosy, loud, occasionally charming. That evening? The bar was busy—myself, those British chaps—Hadley and his friend, what’s his name… Orlov was brooding in the corner, nursing something stronger than ouzo, watching everyone like a hawk. Vivienne Beaumont swept through, trailing gossip as usual. The Duval woman—Annette—was seen on deck after midnight, I think, smoking. The Captain made his rounds just before one—a punctual man.
+
+The night porter, young Marinos, he keeps an eye on our corridor. I saw Giorgos Markakis, the purser, hurrying—seemed agitated. Other than that… well, who truly knows where people slip off to at sea in the night, eh? But me, I barely made it back to my room. I’ll swear it on my business.
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Nikolaos Papadakis testified: Ah, my dear detective, such unfortunate business, eh? On this ship, it...
+  - Image URL: https://v3.fal.media/files/elephant/nfve25tuw0rnzJC7CenYW.png
+  - Generated from: testimony
+  - Character involved: Nikolaos Papadakis
+
+🔍 Testing discovery question 2: 'Did you see anyone acting suspicious?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Nikolaos Papadakis
+Response: Ah, detective, you’ll have to forgive me—last night the ouzo was flowing, and I don’t remember every face so clearly! But suspicious, eh… well, there was a bit of a scene in the lounge before midnight. That British fellow, Hadley, he seemed wound tight, pacing near the bar and shooting glares at Monsieur Duval. And Madame Beaumont—always with the gloved hands, always watching—she slipped out of the games room earlier than usual, hardly said goodnight. 
+
+The crew, they are discreet, but I thought I saw young Marinos—our steward, yes?—hovering near Duval’s corridor much later than his shift should end. As for myself, I was locked in battle over backgammon dice. You can ask Blythe-Smythe and his friend; they grumbled every time I rolled double sixes! But after that, I swear, I saw none but the porter as I made my unsteady way to my linens.
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Nikolaos Papadakis testified: Ah, detective, you’ll have to forgive me—last night the ouzo was flowi...
+  - Image URL: https://v3.fal.media/files/penguin/gOH4g4qYoGTQwVzV1hthA.png
+  - Generated from: testimony
+  - Character involved: Nikolaos Papadakis
+
+🔍 Testing discovery question 3: 'Were there any staff members or visitors present?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Nikolaos Papadakis
+Response: Ah, detective, such a tragedy, eh? I tell you, I still cannot believe what happened to poor Monsieur Duval. As for staff or visitors—well, the corridor was fairly quiet when I returned from the bar, just before three in the morning. The night porter, Andreas—I think his name is Andreas Vardalos—was making his rounds, mopping as always, humming that awful tune. I remember because he nodded to me as I fumbled with my key.
+
+Now, about visitors... Hmm. Earlier in the evening, I did see that Englishman, Mister Hadley, loitering near Lucien’s door—what business he had there, I could not say. And the little lad, Christos—my nephew—he’s always running about, though not at such a late hour, I hope! But directly? No, no one entered Duval’s suite while I was nearby, at least. The place was dead quiet. More’s the pity.
+
+🔍 Testing discovery question 4: 'Who else had access to the crime scene?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Nikolaos Papadakis
+Response: *Papadakis leans forward, his heavy gold ring glinting as he gestures for emphasis, voice a gruff baritone with that familiar Athenian rasp—half offended, half concerned.*
+
+Detective, Lucien’s suite, eh? Well, it’s not the type of place just anyone could wander into—not with that damned Frenchman’s obsession for privacy. But… if you must know, staff like young Giorgos—the steward for this corridor—he has a master key, naturally. The porter, Nikos—steady lad, always prowling about at odd hours—he’d know who came and went at night. Annette, Lucien’s wife, visited him sometimes late; I’ve glimpsed her slipping past my door more than once.
+
+Aside from them? Maybe that Englishman, Hadley—the art collector, always loitering about Lucien like a stray dog. Otherwise, unless someone’s found a way to jimmy those locks, it takes an invitation… or a key, detective. 
+
+*He shrugs, mustache twitching in sympathy beneath the concern in his eyes.*
+
+🔍 Testing discovery question 5: 'Did anyone else know about the victim's activities?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Nikolaos Papadakis
+Response: *Papadakis leans back in his chair with a heavy sigh, brushing crumbs from his vest and smoothing his mustache, eyes glinting with genuine concern.*
+
+Detective, on a ship like this, you know—nothing stays private for long. Lucien was always on display, surrounded by admirers and…let’s just say, opportunists. His wife, Madame Annette, was with him most nights, though I heard they quarreled yesterday after dinner. The Russian, Orlov, he was sniffing around Lucien all week—something about a painting. And, ah, young Andreas, the steward—he always seemed to know when to show up with more drinks, if you understand me. 
+
+But Lucien? He liked to keep some cards close to his chest. If anyone knew his movements, it would be Annette… or perhaps that sly Englishman, Hadley. But me? Last night I was with Reginald and Percival, losing more drachmas than I care to admit. The night porter can vouch for me.
+
+🔍 NEW CHARACTERS DISCOVERED: 1
+  - Georgios Stavrakis (A wiry man in his early forties with watchful dark eyes and neatly slicked black hair, Georgios carries himself with the quiet precision of a lifelong service worker. His uniform is immaculate, his posture attentive, and he speaks with the gentle formality of one accustomed to blending into the background. Though reserved, he is unfailingly polite and possesses a subtle, dry wit.)
+    Discovered through: Nikolaos Papadakis
+    Context: mentioned as someone who can vouch for Papadakis's whereabouts, implying they were present and observant during the night
+✅ New character discovered! Switching to question this character...
+
+🔍 Testing Get Final Case State...
+✅ Passed - Status: 200
+
+Final character count: 15
+New characters discovered: 4
+✅ DYNAMIC CHARACTER DISCOVERY TEST PASSED!
+The investigation started with 11 characters
+and expanded to 15 characters through questioning.
+
+🔍 Testing Get Case...
+✅ Passed - Status: 200
+
+🔍 Testing Analyze Evidence...
+✅ Passed - Status: 200
+Analysis response length: 4163
+Analysis excerpt: ## LOGICAL ANALYSIS: "Death on the Aegean Star"
+
+### 1. **STRENGTHS OF THIS THEORY**
+
+**Limited Support Available:**
+- The jeweled cufflink could pote...
+
+==================================================
+VISUAL TESTIMONY SYSTEM VERIFICATION:
+1. Crime scene visualization is automatically generated for each case
+2. Character testimony can trigger visual scene generation
+3. Visual scenes are added to the case gallery
+4. Visual scenes are linked to the character who described them
+5. Visual triggers in testimony (e.g., 'I saw...', 'I witnessed...') generate scenes
+==================================================
+
+==================================================
+📊 Tests passed: 22/22
+==================================================
