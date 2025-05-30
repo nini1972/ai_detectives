@@ -336,10 +336,10 @@ For each NEW person mentioned, extract:
 
 Return a JSON array of new characters found:
 [
-  {
+  {{
     "role": "role/title",
     "context": "what was said about them"
-  }
+  }}
 ]
 
 If no new people are mentioned, return an empty array: []
