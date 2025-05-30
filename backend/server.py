@@ -570,18 +570,72 @@ async def question_character(request: QuestionRequest):
         if not character:
             raise HTTPException(status_code=404, detail="Character not found")
         
-        # Generate response using AI
+        # Generate response using AI and detect new character mentions
         session_id = str(uuid.uuid4())
-        response = await ai_service.question_character(
+        result = await ai_service.question_character(
             request.case_id, 
             character["name"], 
             request.question,
             session_id
         )
         
-        return {"character_name": character["name"], "response": response}
+        if "error" in result:
+            raise HTTPException(status_code=500, detail=result["error"])
+        
+        response_data = {
+            "character_name": character["name"], 
+            "response": result["response"],
+            "new_characters_discovered": []
+        }
+        
+        # Process any new character mentions
+        if result["new_character_mentions"]:
+            for mention in result["new_character_mentions"]:
+                # Generate the new character
+                new_character = await ai_service.generate_dynamic_character(
+                    request.case_id,
+                    mention["role"],
+                    mention["context"],
+                    session_id
+                )
+                
+                if new_character:
+                    # Add to case in database
+                    await db.cases.update_one(
+                        {"id": request.case_id},
+                        {"$push": {"characters": new_character.model_dump()}}
+                    )
+                    
+                    response_data["new_characters_discovered"].append({
+                        "character": new_character.model_dump(),
+                        "discovered_through": character["name"],
+                        "context": mention["context"]
+                    })
+        
+        return response_data
+        
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to question character: {str(e)}")
+
+@app.post("/api/generate-dynamic-character")
+async def generate_dynamic_character_endpoint(case_id: str, role: str, context: str):
+    """Generate a new character based on a mention"""
+    try:
+        session_id = str(uuid.uuid4())
+        character = await ai_service.generate_dynamic_character(case_id, role, context, session_id)
+        
+        if character:
+            # Add to case in database
+            await db.cases.update_one(
+                {"id": case_id},
+                {"$push": {"characters": character.model_dump()}}
+            )
+            return {"character": character.model_dump()}
+        else:
+            raise HTTPException(status_code=500, detail="Failed to generate character")
+            
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to generate dynamic character: {str(e)}")
 
 @app.post("/api/analyze-evidence")
 async def analyze_evidence(request: AnalysisRequest):
