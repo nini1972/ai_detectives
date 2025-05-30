@@ -214,6 +214,34 @@ function App() {
         }, 10000);
       }
       
+      // Handle visual scene generation
+      if (data.visual_scene_generated) {
+        console.log('Visual scene generated:', data.visual_scene_generated);
+        
+        // Update current case with new visual scene
+        setCurrentCase(prev => ({
+          ...prev,
+          visual_scenes: [...(prev.visual_scenes || []), data.visual_scene_generated]
+        }));
+        
+        // Show visual scene notification
+        const sceneNotification = {
+          id: Date.now() + Math.random(),
+          scene: data.visual_scene_generated,
+          character: data.character_name,
+          timestamp: Date.now()
+        };
+        
+        setVisualSceneNotifications(prev => [...prev, sceneNotification]);
+        
+        // Auto-dismiss after 8 seconds
+        setTimeout(() => {
+          setVisualSceneNotifications(prev => 
+            prev.filter(n => n.id !== sceneNotification.id)
+          );
+        }, 8000);
+      }
+      
       setQuestion('');
     } catch (error) {
       console.error('Error questioning character:', error);
