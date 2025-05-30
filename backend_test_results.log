@@ -8,22 +8,22 @@ Health status: {'status': 'healthy', 'ai_services': 'dual-ai-active'}
 
 🔍 Testing Generate Case...
 ✅ Passed - Status: 200
-Generated case ID: d7116d57-1822-4048-a5b3-4b86943ce49b
-Session ID: 4fbde0bd-b010-44ca-8b83-02d49c2ef7c3
-Case title: Death at Mirador Point
-Setting: Mirador Point, a secluded clifftop mansion overlooking the Pacific Ocean, California, October 1937.
-Victim: Arthur Godfrey
+Generated case ID: b430cfc4-2cbb-4346-9897-57688589f7c2
+Session ID: 2f8b49d2-6076-4f5b-831d-c84f3abde474
+Case title: Murder on Starling Isle
+Setting: Starling Isle, a secluded private island resort off the coast of Maine, modern day (late autumn storm season)
+Victim: Eliza Harrow
 Number of characters: 5
-Number of evidence items: 8
-✅ Crime scene image generated: https://v3.fal.media/files/elephant/E_wR59R7tKBKx1Xlf7SKe.png
-First character: Eleanor Godfrey
+Number of evidence items: 7
+❌ No crime scene image generated
+First character: Julian West
 
 Waiting for case to be fully processed...
 
 🔍 Testing Get Case...
 ✅ Passed - Status: 200
-Retrieved case title: Death at Mirador Point
-✅ Crime scene image present: https://v3.fal.media/files/elephant/E_wR59R7tKBKx1Xlf7SKe.png
+Retrieved case title: Murder on Starling Isle
+❌ No crime scene image present
 
 ==================================================
 TESTING VISUAL TESTIMONY SYSTEM
@@ -37,160 +37,152 @@ Initial visual scenes count: 0
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Eleanor Godfrey
-Response: (Soft sigh, Eleanor smooths her silk cuffs.)
+Character name: Julian West
+Response: (Julian West smooths a cufflink, his voice measured, eyes cool but red-rimmed—the strain of the evening apparent.)
 
-Detective, I confess the evening is something of a haze, but I shall do my best. After returning from my walk on the terrace just past eight, I went upstairs to change—Mrs. Sullivan, the housekeeper, glimpsed me in the corridor, I believe. I was in my suite for much of the hour, sorting through correspondence and preparing for dinner. I recall hearing muffled voices from Arthur's study; Simon Travers, his business associate, was pressing him on something—I suppose you’ve spoken to Simon?
+What did I see? Well—the storm was howling, you remember, and I'd retreated to my suite to join a late video call. I’d hoped to avoid the evening’s drama. Wi-Fi gave out, predictably, so I busied myself with paperwork. Around half past nine, I nipped down the hall hoping to find Roger—he’s usually lurking by the billiards room, but I only spotted Tessa emerging from Eliza’s study. She seemed flustered, muttered something about mislaid papers.
 
-At one point, I passed Ivy Barnes on the landing; she seemed rather distraught, though she hid it well. Dr. LeClerc arrived after nine, I think, coat still damp from the fog. I never entered Arthur’s study that evening. I did notice an odd sweet scent in the corridor around half past nine, but thought nothing of it at the time.
+Later, when the shouting started—Agnes, I think, calling for help—I hurried to the library with the rest. 
+
+I didn’t see or hear anything specifically untoward before that—save perhaps a slammed door, but in these old places that’s nothing unusual. If you’re implying I had reason to harm Eliza, you’re mistaken—family disagreements aside.
 
 🔍 Testing visual question 2: 'Describe what happened in detail'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Eleanor Godfrey
-Response: (With a steady, controlled voice tinged with sorrow, Eleanor smooths a silk scarf at her throat before answering.)
+Character name: Julian West
+Response: (Leans back in the library chair, smoothing a silver cufflink, eyes troubled but steady.)
 
-Of course, Inspector. I spent the evening in my suite preparing for the dinner—going over the seating and reviewing the menu with Mrs. Sullivan. I didn’t see Arthur after tea. Around nine, I stepped into the corridor to ask the housekeeper, Ivy, about fresh linens; she can confirm that much, though we only spoke briefly. I heard Simon Travers’s voice from downstairs—he and Arthur were in heated debate earlier, about that painting Arthur acquired, I believe. 
+It’s all a bit of a blur—I still can’t quite process it. I was in my suite most of the evening on a scheduled call with my European associates. There was a deal I simply had to oversee, given the time zone difference. Unfortunately, the storm made a mess of the Wi-Fi. The connection dropped just after nine-thirty.
 
-The fog was horrendous, and the whole house felt on edge, as though we were waiting for a storm. I noticed Dr. LeClerc arrive late; he seemed out of sorts. But I swear, I never went near the study that night. I kept to my rooms, trying to calm my nerves. Is that… sufficient, Inspector?
+Afterward, I remained in the room, catching up on messages, or—trying to. Around ten, I went downstairs to the conservatory for a drink. I passed Roger in the hall; he looked out of sorts, muttering about the lights flickering. I didn’t see Eliza at all after dinner.
+
+You know, there was quite a lot of tension tonight. Marina and Tessa both had words with Eliza earlier. Even Agnes, who’s usually unflappable, seemed upset. Everyone’s nerves were frayed—perhaps for good reason, as it turns out.
 
 🎬 VISUAL SCENE GENERATED!
   - Title: Scene: Testimony
-  - Description: Eleanor Godfrey testified: (With a steady, controlled voice tinged with sorrow, Eleanor smooths a si...
-  - Image URL: https://v3.fal.media/files/panda/5b45LvlHuKGA05SCvwDJb.png
+  - Description: Julian West testified: (Leans back in the library chair, smoothing a silver cufflink, eyes troubled ...
+  - Image URL: https://v3.fal.media/files/rabbit/GF1vqLX-PAygUgkglcHUf.png
   - Generated from: testimony
-  - Character involved: Eleanor Godfrey
+  - Character involved: Julian West
 ✅ Visual scene generated from question 2!
 
 🔍 Testing visual question 3: 'Tell me about the scene when you found the body'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Eleanor Godfrey
-Response: (With a faint tremor in her voice, Eleanor folds her gloved hands in her lap, gaze unfocused as she remembers.)
+Character name: Julian West
+Response: *Julian smooths a cufflink, voice low but oddly steady.* 
 
-I’m not sure I’ll ever forget that moment, Detective. It was around half past nine, I believe. I’d just finished speaking with Mrs. Sullivan—she fusses terribly over the floral arrangements—and went to fetch a shawl from my suite. I heard a peculiar sound—like something heavy falling—in the corridor by Arthur’s study. At first, I thought it was the wind off the sea rattling the windows again, but then Simon Travers appeared at the top of the stairs, looking rather ashen. He’d tried the door and called for Arthur, but there was no answer.
+Of course, detective. I—well, I didn’t actually *find* Eliza. It was Tessa, the housekeeper. She came running down the hall, pale as milk, shouting for help. I was in my suite, as I told you, on a call, but the storm took out the Wi-Fi, so I was just collecting myself, I suppose.
 
-We found it locked. I suppose Arthur treasured his privacy. Dr. LeClerc was summoned and—well, you know the rest. I scarcely remember anything after seeing Arthur at his desk like that. The scent in the room… it was strange, almost sweet.
+When I reached the library, Roger was already inside—looked shocked, muttering something about the safe. The books were scattered, glass on the floor... Eliza slumped at her desk. Honestly, it’s all somewhat hazy. I remember Marina standing rooted in the doorway, almost catatonic. And—Agnes, the gardener, peered in but disappeared before anyone could ask questions. 
 
-🎬 VISUAL SCENE GENERATED!
-  - Title: Scene: Testimony
-  - Description: Eleanor Godfrey testified: (With a faint tremor in her voice, Eleanor folds her gloved hands in her ...
-  - Image URL: https://v3.fal.media/files/panda/UOKcOt7Mh1fULbhq5b4Qf.png
-  - Generated from: testimony
-  - Character involved: Eleanor Godfrey
-✅ Visual scene generated from question 3!
+I assure you, detective, I scarcely touched anything—didn’t want to disturb the scene. It was... grotesque, truly.
 
 🔍 Testing visual question 4: 'What did the confrontation look like?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Eleanor Godfrey
-Response: (With carefully measured composure, Eleanor folds her gloved hands in her lap, her gaze distant.)
+Character name: Julian West
+Response: (Adjusts cufflinks, voice low and steady.) Detective, you'd have to be more specific—which confrontation? If you mean Eliza and me, our disagreements were dreadfully predictable: her rapping the desk with her knuckle, that sharp tone poised to pierce. Last evening, before dinner, we had words in the study about the manor—her plans to sell, my objections. She was stubborn as ever, but it never escalated beyond raised voices.
 
-I wish I could tell you, Detective, but I didn’t witness any confrontation, if that's what you're implying. Arthur and I barely exchanged words after I returned from Paris, at least not the sort that rise to dramatics. 
-
-I was in my rooms preparing for the dinner, sorting out which gown might impress upon his guests that the Godfreys still care for appearances. Mrs. Sullivan, the housekeeper, saw me near the corridor just after nine, if that helps. The house was unusually quiet… but if you’re searching for heated words, Simon Travers and Arthur quarrelled just last week over that dreadful Modigliani forgery—tempers in this house were never in short supply.
-
-Honestly, if you’re suggesting I confronted Arthur, you’re mistaken. I had more to lose than to gain—believe me.
+But if you mean *the* confrontation in the library, I'm afraid I didn't witness it. I was upstairs in my suite for that critical hour, wrestling with a spotty video call and cursing the gale for dropping our connection. I can't speak to who else might have confronted her, but I did see Roger lingering in the hallway near the library around half past nine—looked rather agitated, frankly. And Tessa, the housekeeper, seemed to be flitting nervously about as well.
 
 🔍 Testing visual question 5: 'Can you describe what you witnessed?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Eleanor Godfrey
-Response: Of course, detective. I was in my suite dressing for the dinner—I confess, it takes longer these days to find the right ensemble. Around nine, I stepped into the corridor; Mrs. Sullivan, the housekeeper, passed by with fresh linens. I barely glimpsed Arthur all evening. Our rooms are at opposite ends, you see.
+Character name: Julian West
+Response: (Adjusts cufflinks, a faint crease forming between his brows.)
 
-I heard voices in the foyer—Simon Travers was heated about something, arguing over the phone, I believe, though I could not catch every word. Dr. LeClerc was in the library, or claimed to be—I noticed he seemed rather anxious when I passed him later.
+Of course, Detective. I don’t know how much I can offer, but I’ll try. I was in my suite during that storm—the wind was howling like a banshee. I’d arranged a video call with colleagues in London, a rather tedious bit of business. The Wi-Fi cut out halfway through, so I tried to reconnect—no luck. Frustrated, I opened a window for air and, from the corridor, I heard voices—could’ve been Roger or Tessa, perhaps both. I caught a glimpse of Marina slipping past, looking unusually unsettled.
 
-I never entered Arthur’s study. He’d become so... private. The staff were bustling, as always, with Ivy darting about nervously. The weather was wretched—the fog quite unnatural even for Mirador. I thought I smelled... something odd on the landing, but imagined it was some new cleaning solvent.
+I didn’t see Eliza until—well, until the shout rang out about her. I wish I’d spoken to her; there was tension between us, yes, about the manor, but this... 
 
-Is there anything else, detective?
+I’m sorry. If I’d noticed anything truly amiss, I swear I’d have intervened.
 
 🎬 VISUAL SCENE GENERATED!
   - Title: Scene: Testimony
-  - Description: Eleanor Godfrey testified: Of course, detective. I was in my suite dressing for the dinner—I confess...
-  - Image URL: https://v3.fal.media/files/zebra/blV8hZfMbRwcqmT67E1a-.png
+  - Description: Julian West testified: (Adjusts cufflinks, a faint crease forming between his brows.)
+
+Of course, De...
+  - Image URL: https://v3.fal.media/files/tiger/Tlp37_VTD8bq_7I3-Yozs.png
   - Generated from: testimony
-  - Character involved: Eleanor Godfrey
+  - Character involved: Julian West
 ✅ Visual scene generated from question 5!
 
 🔍 Testing visual question 6: 'What did you notice about the crime scene?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Eleanor Godfrey
-Response: (With a careful composure, Eleanor folds her gloved hands in her lap, gaze lingering on the window.)
+Character name: Julian West
+Response: (Leans back slightly, hands folded, voice steady but eyes betraying fatigue)
 
-Detective, I—well, I saw very little, truthfully. By the time I heard about Arthur, your men had already closed off the study. But the housekeeper, Mrs. Sullivan, was in quite a state—she kept muttering about some “awful sweet smell,” which is hardly typical for that room; Arthur despised sweets, you know.
+Detective, the scene struck me as...chaotic, which is not like Eliza. She prided herself on a meticulous workspace. The scattered books—especially that rare Audubon tome—suggest some sort of altercation, or at the very least, a desperate search. The wine glass was overturned, staining documents, and I noticed a distinct scent of her perfume, but overlaid with something sharper—perhaps brandy, though she wasn’t a brandy drinker.
 
-As for the study itself, when I passed by earlier on my way to dress, the windows were always kept shut—Arthur was fastidious about drafts. Strange that one was left open last night. I can’t say I saw anyone enter. Though, come to think of it, Simon Travers seemed unusually tense during dinner preparations and was missing for a spell. Perhaps he was merely out for a smoke. 
-
-I wish I could be of more help. It’s all so terribly unreal.
+The safe being ajar is troubling; it’s supposed to require a code known only to Eliza and, I believe, her assistant Clare. I didn’t see anyone else near the library when I arrived, though I did hear Roger Crane’s raised voice in the corridor earlier—he sounded agitated about a lost contract. I suppose stormy nights breed tempers. And, of course, there was that power flicker, which couldn’t have helped matters.
 
 🎬 VISUAL SCENE GENERATED!
   - Title: Scene: Testimony
-  - Description: Eleanor Godfrey testified: (With a careful composure, Eleanor folds her gloved hands in her lap, gaz...
-  - Image URL: https://v3.fal.media/files/lion/B5Y-YT58anPhBYp2nhcAf.png
+  - Description: Julian West testified: (Leans back slightly, hands folded, voice steady but eyes betraying fatigue)
+...
+  - Image URL: https://v3.fal.media/files/panda/BvQt0AC_g9SRJOq9VBtc7.png
   - Generated from: testimony
-  - Character involved: Eleanor Godfrey
+  - Character involved: Julian West
 ✅ Visual scene generated from question 6!
 
 🔍 Testing visual question 7: 'Tell me what you remember seeing'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Eleanor Godfrey
-Response: Detective, forgive me, but my memory is—well, rather clouded. The night felt peculiarly tense, you see. The fog was beginning to press against the windows, and even the house seemed to settle uneasily as the hour grew later.
+Character name: Julian West
+Response: (Julian sits upright, hands clasped on his knee, voice even but tired.)
 
-I was in my suite, just after eight, selecting a gown for dinner. The housekeeper, Mrs. Sullivan, knocked to ask if I needed anything. I remember hearing hurried footsteps in the corridor—possibly Ivy, Arthur’s secretary—she seemed overwrought of late. Around nine, I glanced out and saw Simon Travers pacing on the terrace below, mumbling to himself.
+Yes, well—the evening was chaos with that storm howling through the windows. I’d just brought a bottle of Bordeaux up to my suite, preparing for a video conference with my Zurich partners around nine. The Wi-Fi flickered, then failed entirely—dreadful weather. During that time, I heard raised voices echoing from the hall. Sounded like Eliza and Roger—he’s never been subtle, particularly when the family’s money is the topic.
 
-As for Arthur…I didn’t see him all evening after we exchanged a few words before supper. Truthfully, our conversations lately have been…strained.
+After the connection cut out, I tried ringing the front desk, but lines were down. I caught a glimpse of Tessa, the housekeeper, rushing up the stairs, oddly pale. The next I knew, someone was pounding at my door with news about Eliza.
 
-If you must know, Dr. LeClerc appeared agitated at dinner, fidgeting with his watch. The atmosphere was… charged, detective. As if something inevitable was about to happen.
+I didn’t see Eliza at all after dinner, I’m afraid. If you need to confirm my alibi, my business partner in Zurich will vouch for most of that hour—at least until the signal died.
 
 🔍 NEW CHARACTERS DISCOVERED: 1
-  - Arthur Godfrey (A man in his late fifties, Arthur was tall and lean, with thinning silver hair brushed meticulously back from a high forehead. He had piercing grey eyes, often cold and appraising, and an aristocratic bearing heightened by his tailored suits and measured speech. Lately, he wore a pinched, distracted expression, as if perpetually caught between suspicion and worry.)
-    Discovered through: Eleanor Godfrey
-    Context: Eleanor mentions 'Arthur's secretary' (referring to Ivy) and says 'As for Arthur…I didn't see him all evening after we exchanged a few words before supper. Truthfully, our conversations lately have been…strained.' Arthur appears to be a central figure who Eleanor had strained conversations with.
+  - Matthias Keller (A sharply-dressed man in his late 40s, Matthias is tall and lean, with swept-back salt-and-pepper hair and keen gray eyes behind designer spectacles. He speaks precise, lightly accented English and carries himself with a quiet, methodical confidence befitting an international financier. He is reserved but can be intense when discussing business.)
+    Discovered through: Julian West
+    Context: Julian's business partner in Zurich who can vouch for his alibi during the video conference until the signal died
 ✅ New character discovered! Switching to question this character...
 
 🔍 Testing Get Final Case State...
 ✅ Passed - Status: 200
 
-Final visual scenes count: 4
-New visual scenes generated: 4
+Final visual scenes count: 3
+New visual scenes generated: 3
 
 🔍 Testing Get Case Scenes...
 ✅ Passed - Status: 200
-Retrieved 4 scenes from the gallery API
+Retrieved 3 scenes from the gallery API
 
 Scene 1:
   - Title: Scene: Testimony
-  - Description: Eleanor Godfrey testified: (With a steady, controlled voice tinged with sorrow, Eleanor smooths a si...
+  - Description: Julian West testified: (Leans back in the library chair, smoothing a silver cufflink, eyes troubled ...
   - Generated from: testimony
-  - Character involved: Eleanor Godfrey
+  - Character involved: Julian West
 
 Scene 2:
   - Title: Scene: Testimony
-  - Description: Eleanor Godfrey testified: (With a faint tremor in her voice, Eleanor folds her gloved hands in her ...
+  - Description: Julian West testified: (Adjusts cufflinks, a faint crease forming between his brows.)
+
+Of course, De...
   - Generated from: testimony
-  - Character involved: Eleanor Godfrey
+  - Character involved: Julian West
 
 Scene 3:
   - Title: Scene: Testimony
-  - Description: Eleanor Godfrey testified: Of course, detective. I was in my suite dressing for the dinner—I confess...
+  - Description: Julian West testified: (Leans back slightly, hands folded, voice steady but eyes betraying fatigue)
+...
   - Generated from: testimony
-  - Character involved: Eleanor Godfrey
-
-Scene 4:
-  - Title: Scene: Testimony
-  - Description: Eleanor Godfrey testified: (With a careful composure, Eleanor folds her gloved hands in her lap, gaz...
-  - Generated from: testimony
-  - Character involved: Eleanor Godfrey
+  - Character involved: Julian West
 ✅ VISUAL TESTIMONY SYSTEM TEST PASSED!
-The investigation generated 4 visual scenes from testimony
+The investigation generated 3 visual scenes from testimony
 
 ==================================================
 TESTING DYNAMIC CHARACTER DISCOVERY
@@ -198,107 +190,104 @@ TESTING DYNAMIC CHARACTER DISCOVERY
 
 🔍 Testing Get Initial Case State...
 ✅ Passed - Status: 200
-Initial character count: 6
+Initial character count: 7
 
 🔍 Testing discovery question 1: 'Who else was around that evening?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Arthur Godfrey
-Response: [Arthur adjusts his cufflinks meticulously, his grey eyes lingering on the fogged window before turning to you. His tone is clipped, precise, but weighed with fatigue.]
+Character name: Matthias Keller
+Response: (Adjusts glasses, voice calm but tinged with fatigue)
 
-Aside from myself, Eleanor was, as usual, in her sitting room—she prefers solitude in the evenings. Simon Travers, my...assistant, was meant to catalogue a few pieces in the gallery, though whether he actually accomplished anything is often in doubt. Dr. LeClerc remained in the lounge, nursing his brandy and pontificating on some medical treatise. Mrs. Sullivan, the housekeeper, kept to her routines—she runs the staff with a firmer hand than I ever could. Ivy Barnes, my niece, claims to have taken a walk on the cliffs around dusk, though I didn’t see her return. The gardener left early—the roses, I believe, excuse enough. To my knowledge, no visitors. The household is small, detective, but bear in mind—everyone keeps their own counsel here.
+Detective, as I said, I was connecting remotely from Zurich, so my knowledge is unfortunately secondhand, gleaned from emails and the business call earlier in the evening. However, I know Julian West, Eliza’s partner, was present on the island—he and I were both on the videoconference. Marina Laurent, the gallery curator, had corresponded about cataloguing the Cassatt painting that afternoon. Roger Crane, Eliza’s legal advisor, was involved too, likely in the study.
 
-🔍 NEW CHARACTERS DISCOVERED: 1
-  - Silas Dunphy (A wiry man in his late fifties, Silas wears weathered overalls and battered boots, his hands perpetually stained with soil. Sun-creased skin, thinning ash-grey hair tucked beneath a battered cap, and pale blue eyes that miss little, lend him a quiet, wary presence. He speaks sparingly, with a gruff Californian twang, but his silence is observant rather than sullen.)
-    Discovered through: Arthur Godfrey
-    Context: left early—the roses, I believe, excuse enough
-✅ New character discovered! Switching to question this character...
+Agnes—Eliza’s longtime housekeeper—typically oversees the staff and would have been managing the manor. Clare Davenport, Eliza’s friend and art restorer, was also expected. Tessa Yates, the young assistant, emailed me a schedule update that afternoon from the library. If anyone else arrived unexpectedly, I wouldn’t be privy; my involvement was strictly professional—and, regrettably, at a distance.
 
 🔍 Testing discovery question 2: 'Did you see anyone acting suspicious?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Silas Dunphy
-Response: (Silas shifts his weight, cap pulled low, thumbs hooked in the belt loops of his overalls. He speaks slow and measured, eyes darting briefly towards the heavy coastal mist hanging beyond the window.)
+Character name: Matthias Keller
+Response: [Matthias adjusts his glasses, folding his hands neatly.] I’m afraid I never set foot on Starling Isle, Detective—I remained in Zurich throughout the evening. My exposure to events is entirely remote. Nevertheless, I did notice a certain tension in Julian West’s demeanor during our videoconference with Eliza. He was curt, almost distracted, and kept glancing off-screen as if preoccupied with someone or something nearby. Eliza herself seemed unsettled as well—she cut our call short several times, claiming interruptions on her end from the staff.
 
-“Suspicious, you say? Well… this house’s always got folks movin’ about where they shouldn’t. That afternoon, I seen Miss Ivy—housemaid—loiterin’ by the study door earlier than her usual dustin’ hour. She looked jumpy, like she’d heard a fox in the henhouse. Simon Travers too—pacing out back, near the old yew, muttering up a storm. Never did like the salt air, that one. As for me, I left just after four—had to fetch supplies Mr. Godfrey asked for, so I weren’t here when… well, when it happened. Folks in town can vouch fer that. But if you’re askin’, there was a tension round here all week. Somethin’ was brewing, sure as fog off the bluff.”
+I couldn’t say if it was anything sinister, but perhaps you might inquire with Roger Crane. He is head of estate security, yes? I imagine he would know if anyone was acting out of the ordinary, especially with the storm approaching.
+
+I regret I cannot provide more, but if you need corroboration regarding my whereabouts, my assistant Ms. Brunner kept meticulous logs of the call.
 
 🎬 VISUAL SCENE GENERATED!
   - Title: Scene: Testimony
-  - Description: Silas Dunphy testified: (Silas shifts his weight, cap pulled low, thumbs hooked in the belt loops of...
-  - Image URL: https://v3.fal.media/files/elephant/_8yIQS4YYdt0TGKe0Cq5P.png
+  - Description: Matthias Keller testified: [Matthias adjusts his glasses, folding his hands neatly.] I’m afraid I ne...
+  - Image URL: https://v3.fal.media/files/koala/DlBLI2uX_V5O0t9erAerC.png
   - Generated from: testimony
-  - Character involved: Silas Dunphy
+  - Character involved: Matthias Keller
 
 🔍 Testing discovery question 3: 'Were there any staff members or visitors present?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Silas Dunphy
-Response: *Silas shifts on his boots, cap pulled low, eyes flicking up just once before fixing on a patch of floor.*
+Character name: Matthias Keller
+Response: Detective, I must clarify—I was never physically present on Starling Isle. My only involvement was via videoconference from Zurich. However, from my dealings with the company, I’m aware the estate is staffed year-round—there’s a housekeeper, Agnes Merriweather, who saw to guests and daily affairs, and Roger Crane, the caretaker, handles security and maintenance, if I recall correctly.
 
-Aye, there were folks about. Mrs. Sullivan was in and outta the kitchen most the mornin’—heard her clatterin’ pans ‘round noon. Ivy Barnes, she was tidyin’ the west wing, hummin’ like usual. Mr. Travers poked round the gardens after lunch, stampin’ mud on the cobbles—never met a man who liked his walks more. Dr. LeClerc was meant to check on Mr. Godfrey’s nerves, but I didn’t see him myself. Mrs. Godfrey stayed shut up with her books from midday on, at least so far as I noticed.
-
-No outsiders came far as I saw. Just the house folks. Wasn’t much unusual, not before I left for town. If you’re askin’ ‘bout strangers, well—Mirador don’t get ‘em, what with the fog and all.
-
-🎬 VISUAL SCENE GENERATED!
-  - Title: Scene: Testimony
-  - Description: Silas Dunphy testified: *Silas shifts on his boots, cap pulled low, eyes flicking up just once befor...
-  - Image URL: https://v3.fal.media/files/zebra/TTfMlmZWS8zW6_SA4mplE.png
-  - Generated from: testimony
-  - Character involved: Silas Dunphy
+Aside from Eliza, Julian, and the occasional guest—Marina Laurent comes to mind, she’s one of Eliza’s recent clients—I can’t speak with certainty about who else was on the island that evening. My engagement was strictly professional. I do remember sensing some tension on the call earlier, which may be relevant. Perhaps Agnes or Roger would have better knowledge of the comings and goings that night. If you require contact details for any business associates, I can provide them.
 
 🔍 Testing discovery question 4: 'Who else had access to the crime scene?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Silas Dunphy
-Response: (He takes off his battered cap, rubbing a muddy thumb along its brim, eyes steady on the floorboards rather than your face.)
+Character name: Matthias Keller
+Response: Detective, I regret I cannot provide direct observations—my only knowledge of the scene is what was visible during my videoconference. But I am aware that several individuals were staying at Starling Manor: Julian West, Eliza’s co-director; Marina Laurent, the art curator; Roger Crane, the security consultant; and those guests, Tessa Yates and Agnes Merriweather. Felicity Brunner, Eliza’s personal assistant, also had routine access to the library—she sometimes fetched files for Eliza, even during late hours. There is also Clare Davenport, the housekeeper, who tended to the room.
 
-Well, reckon that's a question for Mrs. Sullivan mostly—housekeeper keeps tighter tabs on keys than the rest of us. Study's doors are usually locked unless Mr. Godfrey’s in there or expecting someone. Far as I know, only Mrs. Sullivan, Mr. Travers—Arthur’s assistant—and sometimes Mrs. Godfrey herself had their own keys. Rest of us? We knock, and that’s that.
+Given the library’s importance, anyone with business at the manor could plausibly pass through, especially on a stormy evening with staff stretched thin. I should also note, there were rumors of someone—a groundskeeper, perhaps—seen wandering the grounds during the blackout, but naturally I cannot verify this personally.
 
-That said... Ivy—Miss Barnes—runs errands up there, tea and such, though mostly with someone else present. Saw Dr. LeClerc coming and going too, these past days, what with Arthur’s complaints about his nerves.
-
-Can’t say more than that. Wasn’t my place—I had my hands full outdoors. Didn’t see anyone slip inside who shouldn’t, and that’s the truth.
+🔍 NEW CHARACTERS DISCOVERED: 1
+  - Calvin 'Cal' Thatcher (A rugged, broad-shouldered man in his late 40s with wind-chapped skin, deep-set blue eyes, and calloused hands. Usually seen in a waxed canvas jacket and work boots, Cal speaks little but listens closely, projecting a stoic, weathered calm.)
+    Discovered through: Matthias Keller
+    Context: rumors of someone—a groundskeeper, perhaps—seen wandering the grounds during the blackout, but naturally I cannot verify this personally
+✅ New character discovered! Switching to question this character...
 
 🔍 Testing discovery question 5: 'Did anyone else know about the victim's activities?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Silas Dunphy
-Response: *Silas shifts his weight, the toes of one boot scuffing the tiled floor. He doesn’t meet your eyes at first, gaze flicking instead to the window and the persistent creep of coastal fog.*
+Character name: Calvin 'Cal' Thatcher
+Response: (calms his breath, voice low and steady)
 
-Mr. Godfrey kept his cards close, if y’ask me. Most days he’d hole up in that study, sometimes call for Mrs. Sullivan about the ledgers or for tea. This morning, though, I did hear him bickering with Simon Travers—weren’t the first time, won’t be the last. Simon’s got ideas about the grounds—Arthur never liked being told what to do. And Mrs. Godfrey, well, she passed by the rose garden around three. She seemed… distracted. As for the rest—Dr. LeClerc stuck to his own business, and Ivy, the maid, was fussing with linens upstairs last I noticed. Folks keep to their roles around here, but the walls? They don’t lack for listening.
+Couldn’t say for sure what Miss Harrow revealed to others, but she kept her business close. Far as I know, Julian West—the manager—was with her most afternoons, going over guest lists and contracts. Sometimes I’d see Marina, her assistant, bring in stacks of files, but she never lingered. Tessa Yates, the chef, tends to wander the manor most evenings; heard her mention some late-night menus Eliza wanted. 
+
+Earlier today, I saw Roger Crane—friend of the family—in the library, arguing about the foundation’s funds. Seemed heated, but I kept to my work. Most folk give the old library a wide berth after dark. 
+
+If you’re asking if anyone knew exactly what she was up to—maybe Julian or Marina. Folk like me? We’re kept in the dark, same as always.
 
 🎬 VISUAL SCENE GENERATED!
   - Title: Scene: Testimony
-  - Description: Silas Dunphy testified: *Silas shifts his weight, the toes of one boot scuffing the tiled floor. He ...
-  - Image URL: https://v3.fal.media/files/penguin/8hK53DQy27t6HGPre64Mb.png
+  - Description: Calvin 'Cal' Thatcher testified: (calms his breath, voice low and steady)
+
+Couldn’t say for sure wha...
+  - Image URL: https://v3.fal.media/files/zebra/N2WNY4RQK-w1pi5H8HUMr.png
   - Generated from: testimony
-  - Character involved: Silas Dunphy
+  - Character involved: Calvin 'Cal' Thatcher
 
 🔍 Testing Get Final Case State...
 ✅ Passed - Status: 200
 
-Final character count: 7
-New characters discovered: 1
+Final character count: 9
+New characters discovered: 2
 ✅ DYNAMIC CHARACTER DISCOVERY TEST PASSED!
-The investigation started with 6 characters
-and expanded to 7 characters through questioning.
+The investigation started with 7 characters
+and expanded to 9 characters through questioning.
 
 🔍 Testing Get Case...
 ✅ Passed - Status: 200
 
 🔍 Testing Analyze Evidence...
 ✅ Passed - Status: 200
-Analysis response length: 3575
-Analysis excerpt: # LOGICAL ANALYSIS: "Death at Mirador Point"
+Analysis response length: 4462
+Analysis excerpt: # LOGICAL ANALYSIS: Murder on Starling Isle
 
-## 1. **Strengths of This Theory**
+## 1. STRENGTHS OF THIS THEORY
 
-**Limited but Relevant Support:**
-- The locked room scenario suggest...
+**Supporting Elements:**
+- **Financial motive is statistically common** i...
 
 ==================================================
 VISUAL TESTIMONY SYSTEM VERIFICATION:

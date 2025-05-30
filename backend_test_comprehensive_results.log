@@ -1,0 +1,53 @@
+==================================================
+AI-POWERED VISUAL TESTIMONY SYSTEM TESTER
+==================================================
+
+🔍 Testing Health Endpoint...
+✅ Passed - Status: 200
+Health status: {'status': 'healthy', 'ai_services': 'dual-ai-active'}
+
+🔍 Testing Generate Case...
+✅ Passed - Status: 200
+Generated case ID: 8dca3620-8c4e-42b5-9a58-ab86932d4326
+Session ID: edabe63d-7736-45c2-aa93-dfae8e3a8bb1
+Case title: Death at Starling Manor
+Setting: Starling Manor, an isolated Neo-Gothic estate on the Cornish coast, United Kingdom, autumn 1937
+Victim: Reginald Starling
+Number of characters: 5
+Number of evidence items: 8
+❌ No crime scene image generated
+First character: Vivienne Starling
+
+Waiting for case to be fully processed...
+
+🔍 Testing Get Case...
+✅ Passed - Status: 200
+Retrieved case title: None
+❌ No crime scene image present
+
+==================================================
+TESTING VISUAL TESTIMONY SYSTEM
+==================================================
+
+🔍 Testing Get Initial Case State...
+✅ Passed - Status: 200
+Initial visual scenes count: 0
+
+🔍 Testing visual question: 'What exactly did you see that night?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Vivienne Starling
+Response: Detective, I assure you, my evening was tragically dull compared to what followed. After dinner, I retired early—Reginald and I had exchanged rather…heated words, and I thought it best not to linger. I entered my bedroom just before midnight; young Elsie saw me, I believe. I began undressing, brushing my hair. There was a storm—you must have heard it, rattling the windows terribly. I heard Reginald’s study door slam at some point, but paid it little mind. As for others, Charles Blackwood was lingering in the hall after supper, muttering to himself. Eleanor appeared anxious, pacing outside her room. And the doctor—Dr. Mallory—was nowhere to be seen for quite some time. I heard footsteps, but with these old floorboards, who can say from where? I did not leave my room…until the commotion began. If you’re suggesting otherwise, I hope you have more than wild suspicion.
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Vivienne Starling testified: Detective, I assure you, my evening was tragically dull compared to wha ...
+  - Image URL: https://v3.fal.media/files/tiger/vkWxkXD3rXyqwRt7ou15l.png
+  - Generated from: testimony
+  - Character involved: Vivienne Starling
+✅ Visual scene generated from visual trigger question!
+
+🔍 Testing visual question: 'Describe what happened in detail'
+
+🔍 Testing Question Character...
