@@ -200,21 +200,41 @@ class DetectiveGameAPITester:
         
         return discovery_success
     
-    def test_get_case(self):
-        """Test retrieving a specific case"""
+    def test_analyze_evidence(self):
+        """Test analyzing evidence and theory"""
         if not self.case_id:
-            print("❌ Cannot test case retrieval - no case ID")
+            print("❌ Cannot test evidence analysis - no case ID")
             return False
             
-        success, response = self.run_test(
+        # Get first evidence ID
+        success, case_response = self.run_test(
             "Get Case",
             "GET",
             f"/api/cases/{self.case_id}",
             200
         )
         
+        if not success or not case_response.get('case', {}).get('evidence'):
+            print("❌ Failed to get evidence for analysis")
+            return False
+            
+        evidence_id = case_response['case']['evidence'][0]['id']
+        
+        success, response = self.run_test(
+            "Analyze Evidence",
+            "POST",
+            "/api/analyze-evidence",
+            200,
+            data={
+                "case_id": self.case_id,
+                "evidence_ids": [evidence_id],
+                "theory": "I believe the murder was committed by the victim's closest associate due to financial motives."
+            }
+        )
+        
         if success:
-            print(f"Retrieved case title: {response['case']['title']}")
+            print(f"Analysis response length: {len(response['analysis'])}")
+            print(f"Analysis excerpt: {response['analysis'][:150]}...")
         
         return success
 
