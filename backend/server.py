@@ -376,8 +376,143 @@ Return ONLY the JSON array, nothing else."""
         
         return {
             "response": response,
-            "new_character_mentions": new_mentions
+            "new_character_mentions": new_mentions,
+            "visual_scene": None  # Will be populated if scene is generated
         }
+
+    async def generate_visual_scene(self, case_id: str, scene_context: str, scene_type: str = "testimony", character_name: str = None) -> Optional[VisualScene]:
+        """Generate a visual scene based on testimony or case context"""
+        try:
+            # Get case details for context
+            case = await db.cases.find_one({"id": case_id})
+            if not case:
+                return None
+            
+            await self.initialize_storyteller(str(uuid.uuid4()))
+            
+            # Create detailed prompt for image generation
+            prompt_creation = f"""Based on this detective case context, create a detailed visual prompt for image generation:
+
+CASE CONTEXT:
+- Title: {case['title']}
+- Setting: {case['setting']}
+- Crime Scene: {case['crime_scene_description']}
+- Victim: {case['victim_name']}
+
+SCENE TO VISUALIZE:
+{scene_context}
+
+Create a detailed image generation prompt that includes:
+1. Visual style: detective noir, atmospheric, cinematic
+2. Time period/setting details from the case
+3. Specific scene elements mentioned
+4. Lighting and mood appropriate for a detective mystery
+5. Character descriptions if people are involved
+
+Return ONLY the image prompt, nothing else. Make it detailed but under 200 words.
+Keep it appropriate for a detective game - dramatic but not graphic."""
+
+            image_prompt = await self.storyteller_ai.send_message(UserMessage(text=prompt_creation))
+            
+            # Generate image using FAL.AI
+            handler = await fal_client.submit_async(
+                "fal-ai/flux/dev",
+                arguments={
+                    "prompt": f"Detective noir style, atmospheric lighting, cinematic composition: {image_prompt.strip()}",
+                    "image_size": "landscape_4_3",
+                    "num_inference_steps": 28,
+                    "guidance_scale": 3.5
+                }
+            )
+            
+            result = await handler.get()
+            
+            if result.get("images") and len(result["images"]) > 0:
+                image_url = result["images"][0]["url"]
+                
+                # Create scene object
+                scene = VisualScene(
+                    id=str(uuid.uuid4()),
+                    title=f"Scene: {scene_type.title()}",
+                    description=scene_context[:200] + "..." if len(scene_context) > 200 else scene_context,
+                    image_url=image_url,
+                    generated_from=scene_type,
+                    context=scene_context,
+                    character_involved=character_name,
+                    timestamp=datetime.now()
+                )
+                
+                # Add scene to case
+                await db.cases.update_one(
+                    {"id": case_id},
+                    {"$push": {"visual_scenes": scene.model_dump()}}
+                )
+                
+                return scene
+            
+            return None
+            
+        except Exception as e:
+            print(f"Error generating visual scene: {e}")
+            return None
+
+    async def generate_crime_scene_image(self, case_id: str) -> Optional[str]:
+        """Generate the main crime scene image for a case"""
+        try:
+            case = await db.cases.find_one({"id": case_id})
+            if not case:
+                return None
+            
+            await self.initialize_storyteller(str(uuid.uuid4()))
+            
+            # Create detailed crime scene prompt
+            prompt_creation = f"""Create a detailed image generation prompt for this crime scene:
+
+CASE: {case['title']}
+SETTING: {case['setting']}
+CRIME SCENE: {case['crime_scene_description']}
+VICTIM: {case['victim_name']}
+
+Create a detective noir crime scene image prompt that shows:
+1. The actual crime scene location
+2. Atmospheric detective noir lighting
+3. Period-appropriate details from the setting
+4. Mystery and intrigue without being graphic
+5. Evidence or clues visible in the scene
+
+Return ONLY the image prompt, nothing else. Make it cinematic and atmospheric."""
+
+            image_prompt = await self.storyteller_ai.send_message(UserMessage(text=prompt_creation))
+            
+            # Generate image using FAL.AI
+            handler = await fal_client.submit_async(
+                "fal-ai/flux/dev",
+                arguments={
+                    "prompt": f"Detective noir crime scene, atmospheric lighting, cinematic mystery: {image_prompt.strip()}",
+                    "image_size": "landscape_4_3",
+                    "num_inference_steps": 28,
+                    "guidance_scale": 3.5
+                }
+            )
+            
+            result = await handler.get()
+            
+            if result.get("images") and len(result["images"]) > 0:
+                image_url = result["images"][0]["url"]
+                
+                # Update case with crime scene image
+                await db.cases.update_one(
+                    {"id": case_id},
+                    {"$set": {"crime_scene_image_url": image_url}}
+                )
+                
+                return image_url
+            
+            return None
+            
+        except Exception as e:
+            print(f"Error generating crime scene image: {e}")
+            return None
 
     async def generate_dynamic_character(self, case_id: str, role: str, context: str, session_id: str) -> Character:
         """Generate a new character based on a mention in conversation"""
