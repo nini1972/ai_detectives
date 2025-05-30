@@ -148,7 +148,7 @@ function App() {
             backgroundImage: 'url(https://images.unsplash.com/photo-1652985808809-08b53267628b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwyfHxub2lyJTIwZGV0ZWN0aXZlfGVufDB8fHx8MTc0ODU5MDIxOHww&ixlib=rb-4.1.0&q=85)'
           }}
         />
-        <div className="relative z-10 container mx-auto px-4 py-8">
+        <div className="relative z-10 container mx-auto px-4 py-8 min-h-screen">
           <div className="text-center">
             <h1 className="text-6xl font-bold text-white mb-4 tracking-wide gradient-text">
               🕵️ DUAL-AI DETECTIVE
