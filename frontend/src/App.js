@@ -16,6 +16,8 @@ function App() {
   const [gameState, setGameState] = useState('menu'); // menu, playing, analysis
   const [investigationNotes, setInvestigationNotes] = useState('');
   const [showContextPanel, setShowContextPanel] = useState(false);
+  const [savedGames, setSavedGames] = useState([]);
+  const [showSaveLoad, setShowSaveLoad] = useState(false);
 
   const generateNewCase = async () => {
     setLoading(true);
