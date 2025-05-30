@@ -264,10 +264,7 @@ function App() {
             
             <div className="flex gap-4 mt-6 justify-center">
               <button
-                onClick={() => {
-                  console.log('Load Saved Game clicked');
-                  setShowSaveLoad(true);
-                }}
+                onClick={() => setShowSaveLoad(true)}
                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
               >
                 💾 Load Saved Game
