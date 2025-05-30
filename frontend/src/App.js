@@ -320,6 +320,7 @@ function App() {
                   <h3 className="text-lg font-semibold text-white mb-3">
                     Question {activeCharacter.name}
                   </h3>
+                  {console.log('Rendering question interface for:', activeCharacter.name)}
                   <div className="flex gap-3">
                     <input
                       type="text"
