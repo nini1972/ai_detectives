@@ -146,6 +146,24 @@ class DetectiveGameAPITester:
             print(f"Analysis excerpt: {response['analysis'][:150]}...")
         
         return success
+    
+    def test_get_case(self):
+        """Test retrieving a specific case"""
+        if not self.case_id:
+            print("❌ Cannot test case retrieval - no case ID")
+            return False
+            
+        success, response = self.run_test(
+            "Get Case",
+            "GET",
+            f"/api/cases/{self.case_id}",
+            200
+        )
+        
+        if success:
+            print(f"Retrieved case title: {response['case']['title']}")
+        
+        return success
 
 def main():
     print("=" * 50)
@@ -170,6 +188,11 @@ def main():
     print("\nWaiting for case to be fully processed...")
     time.sleep(2)
     
+    # Test case retrieval
+    get_case_ok = tester.test_get_case()
+    if not get_case_ok:
+        print("❌ Case retrieval failed")
+    
     # Test character questioning
     question_ok = tester.test_question_character()
     if not question_ok:
@@ -180,6 +203,12 @@ def main():
     if not analysis_ok:
         print("❌ Evidence analysis failed")
     
+    print("\n" + "=" * 50)
+    print("NOTE: Save/Load Game functionality is client-side only")
+    print("      using browser localStorage. No backend API endpoints")
+    print("      are required for this functionality.")
+    print("=" * 50)
+    
     # Print results
     print("\n" + "=" * 50)
     print(f"📊 Tests passed: {tester.tests_passed}/{tester.tests_run}")
@@ -189,4 +218,3 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
-      
