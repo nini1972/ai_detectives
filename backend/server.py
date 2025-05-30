@@ -9,6 +9,8 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import uuid
 from datetime import datetime
 from emergentintegrations.llm.chat import LlmChat, UserMessage
+import fal_client
+import json
 
 load_dotenv()
 
@@ -32,6 +34,11 @@ db = client[db_name]
 # AI API Keys
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+FAL_KEY = os.environ.get("FAL_KEY")
+
+# Set FAL API key for image generation
+if FAL_KEY:
+    os.environ["FAL_KEY"] = FAL_KEY
 
 # Data models
 class Character(BaseModel):
