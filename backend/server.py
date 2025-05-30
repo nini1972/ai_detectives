@@ -390,6 +390,20 @@ async def get_case(case_id: str):
         # Remove MongoDB ObjectId and solution from response
         if "_id" in case:
             del case["_id"]
+        
+        # Convert any ObjectId to string to ensure JSON serialization
+        def convert_objectid(obj):
+            from bson import ObjectId
+            if isinstance(obj, dict):
+                return {k: convert_objectid(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert_objectid(item) for item in obj]
+            elif isinstance(obj, ObjectId):
+                return str(obj)
+            else:
+                return obj
+        
+        case = convert_objectid(case)
         case["solution"] = "Hidden until case is solved"
         
         return {"case": case}
