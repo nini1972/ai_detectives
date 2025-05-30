@@ -179,10 +179,29 @@ function App() {
             <button
               onClick={generateNewCase}
               disabled={loading}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 btn-primary shadow-lg"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 btn-primary shadow-lg relative overflow-hidden"
             >
-              {loading ? '🔮 Generating Mystery...' : '🎯 Start New Investigation'}
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <div className="loading-spinner mr-3"></div>
+                  🔮 Dual-AI Creating Your Mystery...
+                </span>
+              ) : '🎯 Start New Investigation'}
             </button>
+            
+            {loading && (
+              <div className="mt-6 bg-blue-500/20 backdrop-blur-md rounded-lg p-6 border border-blue-400/30">
+                <div className="text-center">
+                  <div className="loading-spinner mx-auto mb-4"></div>
+                  <h3 className="text-xl font-semibold text-blue-300 mb-2">🤖 Dual-AI System Working...</h3>
+                  <div className="space-y-2 text-blue-200">
+                    <p>🎭 <strong>Storyteller AI (OpenAI)</strong> is crafting your unique mystery...</p>
+                    <p>🧠 <strong>Logic AI (Claude)</strong> is ensuring all clues connect perfectly...</p>
+                    <p className="text-sm text-blue-300 mt-3">This may take 10-30 seconds for the best experience</p>
+                  </div>
+                </div>
+              </div>
+            )}
             
             <div className="mt-12 text-center">
               <h3 className="text-lg font-semibold text-white mb-4">🎮 What Makes This Special?</h3>
