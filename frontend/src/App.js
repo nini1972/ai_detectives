@@ -1,52 +1,386 @@
-import { useEffect } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
-const Home = () => {
-  const helloWorldApi = async () => {
+function App() {
+  const [currentCase, setCurrentCase] = useState(null);
+  const [sessionId, setSessionId] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [activeCharacter, setActiveCharacter] = useState(null);
+  const [question, setQuestion] = useState('');
+  const [conversations, setConversations] = useState({});
+  const [selectedEvidence, setSelectedEvidence] = useState([]);
+  const [theory, setTheory] = useState('');
+  const [analysis, setAnalysis] = useState('');
+  const [gameState, setGameState] = useState('menu'); // menu, playing, analysis
+
+  const generateNewCase = async () => {
+    setLoading(true);
     try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
+      const response = await fetch(`${BACKEND_URL}/api/generate-case`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to generate case');
+      }
+      
+      const data = await response.json();
+      setCurrentCase(data.case);
+      setSessionId(data.session_id);
+      setGameState('playing');
+      setConversations({});
+      setSelectedEvidence([]);
+      setTheory('');
+      setAnalysis('');
+    } catch (error) {
+      console.error('Error generating case:', error);
+      alert('Failed to generate new case. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
+  const questionCharacter = async () => {
+    if (!question.trim() || !activeCharacter) return;
+    
+    setLoading(true);
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/question-character`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          case_id: currentCase.id,
+          character_id: activeCharacter.id,
+          question: question.trim()
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to question character');
+      }
+      
+      const data = await response.json();
+      
+      // Add to conversations
+      const charId = activeCharacter.id;
+      setConversations(prev => ({
+        ...prev,
+        [charId]: [
+          ...(prev[charId] || []),
+          {
+            question: question.trim(),
+            response: data.response,
+            timestamp: new Date().toLocaleTimeString()
+          }
+        ]
+      }));
+      
+      setQuestion('');
+    } catch (error) {
+      console.error('Error questioning character:', error);
+      alert('Failed to question character. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const analyzeEvidence = async () => {
+    if (!theory.trim() || selectedEvidence.length === 0) {
+      alert('Please select evidence and provide a theory to analyze.');
+      return;
+    }
+    
+    setLoading(true);
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/analyze-evidence`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          case_id: currentCase.id,
+          evidence_ids: selectedEvidence,
+          theory: theory.trim()
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to analyze evidence');
+      }
+      
+      const data = await response.json();
+      setAnalysis(data.analysis);
+      setGameState('analysis');
+    } catch (error) {
+      console.error('Error analyzing evidence:', error);
+      alert('Failed to analyze evidence. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleEvidenceSelection = (evidenceId) => {
+    setSelectedEvidence(prev => 
+      prev.includes(evidenceId) 
+        ? prev.filter(id => id !== evidenceId)
+        : [...prev, evidenceId]
+    );
+  };
+
+  if (gameState === 'menu' || !currentCase) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center">
+            <h1 className="text-6xl font-bold text-white mb-4 tracking-wide">
+              🕵️ DUAL-AI DETECTIVE
+            </h1>
+            <p className="text-xl text-blue-200 mb-8 max-w-3xl mx-auto">
+              Experience the world's first detective game powered by TWO AI systems working together. 
+              OpenAI creates the story, Claude analyzes the logic. Every case is unique.
+            </p>
+            
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 max-w-4xl mx-auto mb-8">
+              <h2 className="text-2xl font-bold text-white mb-6">🚀 Revolutionary Features</h2>
+              <div className="grid md:grid-cols-2 gap-6 text-left">
+                <div className="bg-blue-500/20 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-blue-300 mb-2">🎭 Storyteller AI (OpenAI)</h3>
+                  <p className="text-blue-100">Creates rich narratives, develops characters, and brings suspects to life in natural conversations</p>
+                </div>
+                <div className="bg-purple-500/20 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-purple-300 mb-2">🧠 Logic AI (Claude)</h3>
+                  <p className="text-purple-100">Analyzes evidence, detects contradictions, and provides logical deduction assistance</p>
+                </div>
+                <div className="bg-green-500/20 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-green-300 mb-2">🎲 Dynamic Cases</h3>
+                  <p className="text-green-100">Every mystery is procedurally generated with unique characters, evidence, and solutions</p>
+                </div>
+                <div className="bg-orange-500/20 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-orange-300 mb-2">💬 Natural Investigation</h3>
+                  <p className="text-orange-100">Ask suspects anything using natural language - no limited dialogue trees</p>
+                </div>
+              </div>
+            </div>
+            
+            <button
+              onClick={generateNewCase}
+              disabled={loading}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
+            >
+              {loading ? '🔮 Generating Mystery...' : '🎯 Start New Investigation'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (gameState === 'analysis') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900">
+        <div className="container mx-auto px-4 py-8">
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-8">
+            <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+              🧠 Logic AI Analysis
+            </h2>
+            
+            <div className="bg-purple-500/20 rounded-lg p-6 mb-6">
+              <h3 className="text-xl font-semibold text-purple-300 mb-3">Your Theory:</h3>
+              <p className="text-white bg-black/20 rounded p-3">{theory}</p>
+            </div>
+            
+            <div className="bg-blue-500/20 rounded-lg p-6 mb-6">
+              <h3 className="text-xl font-semibold text-blue-300 mb-3">Claude's Analysis:</h3>
+              <div className="text-white whitespace-pre-wrap bg-black/20 rounded p-4">
+                {analysis}
+              </div>
+            </div>
+            
+            <div className="flex gap-4">
+              <button
+                onClick={() => setGameState('playing')}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              >
+                ← Continue Investigation
+              </button>
+              <button
+                onClick={() => setGameState('menu')}
+                className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              >
+                🏠 New Case
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-red-900 to-orange-900">
+      <div className="container mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-white mb-2">{currentCase.title}</h1>
+          <p className="text-orange-200 text-lg">{currentCase.setting}</p>
+          <button
+            onClick={() => setGameState('menu')}
+            className="mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+          >
+            🏠 New Case
+          </button>
+        </div>
 
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Crime Scene & Characters */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Crime Scene */}
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+              <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
+                🕵️ Crime Scene
+              </h2>
+              <div className="bg-red-500/20 rounded-lg p-4 mb-4">
+                <h3 className="text-lg font-semibold text-red-300 mb-2">Victim: {currentCase.victim_name}</h3>
+                <p className="text-white">{currentCase.crime_scene_description}</p>
+              </div>
+            </div>
+
+            {/* Characters */}
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+              <h2 className="text-2xl font-bold text-white mb-4">👥 Suspects</h2>
+              <div className="grid gap-4">
+                {currentCase.characters.map((character) => (
+                  <div 
+                    key={character.id}
+                    className={`bg-orange-500/20 rounded-lg p-4 cursor-pointer transition-all ${
+                      activeCharacter?.id === character.id ? 'ring-2 ring-orange-400 bg-orange-500/30' : 'hover:bg-orange-500/30'
+                    }`}
+                    onClick={() => setActiveCharacter(character)}
+                  >
+                    <h3 className="text-lg font-semibold text-orange-300 mb-2">{character.name}</h3>
+                    <p className="text-white text-sm mb-2">{character.description}</p>
+                    <p className="text-orange-200 text-xs"><strong>Background:</strong> {character.background}</p>
+                    <p className="text-orange-200 text-xs"><strong>Alibi:</strong> {character.alibi}</p>
+                    {character.motive && (
+                      <p className="text-red-300 text-xs mt-2"><strong>Possible Motive:</strong> {character.motive}</p>
+                    )}
+                    
+                    {/* Show conversation history */}
+                    {conversations[character.id] && (
+                      <div className="mt-4 space-y-2">
+                        {conversations[character.id].map((conv, idx) => (
+                          <div key={idx} className="bg-black/20 rounded p-2 text-sm">
+                            <p className="text-yellow-300"><strong>Q:</strong> {conv.question}</p>
+                            <p className="text-white"><strong>A:</strong> {conv.response}</p>
+                            <p className="text-gray-400 text-xs">{conv.timestamp}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Question Interface */}
+              {activeCharacter && (
+                <div className="mt-6 bg-black/20 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-white mb-3">
+                    Question {activeCharacter.name}
+                  </h3>
+                  <div className="flex gap-3">
+                    <input
+                      type="text"
+                      value={question}
+                      onChange={(e) => setQuestion(e.target.value)}
+                      placeholder="Ask anything... (e.g., 'Where were you at 9pm?' or 'What did you think of the victim?')"
+                      className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-400"
+                      onKeyPress={(e) => e.key === 'Enter' && questionCharacter()}
+                    />
+                    <button
+                      onClick={questionCharacter}
+                      disabled={loading || !question.trim()}
+                      className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-6 rounded-lg transition-colors disabled:opacity-50"
+                    >
+                      {loading ? '💭' : 'Ask'}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Evidence & Analysis Panel */}
+          <div className="space-y-6">
+            {/* Evidence */}
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+              <h2 className="text-2xl font-bold text-white mb-4">🔍 Evidence</h2>
+              <div className="space-y-3">
+                {currentCase.evidence.map((evidence) => (
+                  <div 
+                    key={evidence.id}
+                    className={`bg-blue-500/20 rounded-lg p-3 cursor-pointer transition-all ${
+                      selectedEvidence.includes(evidence.id) ? 'ring-2 ring-blue-400 bg-blue-500/30' : 'hover:bg-blue-500/30'
+                    }`}
+                    onClick={() => toggleEvidenceSelection(evidence.id)}
+                  >
+                    <h3 className="text-md font-semibold text-blue-300 mb-1">{evidence.name}</h3>
+                    <p className="text-white text-sm mb-1">{evidence.description}</p>
+                    <p className="text-blue-200 text-xs"><strong>Found:</strong> {evidence.location_found}</p>
+                    <p className="text-blue-200 text-xs"><strong>Significance:</strong> {evidence.significance}</p>
+                    {evidence.is_key_evidence && (
+                      <span className="inline-block mt-2 bg-yellow-500 text-black text-xs px-2 py-1 rounded">
+                        KEY EVIDENCE
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Theory Analysis */}
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+              <h2 className="text-xl font-bold text-white mb-4">🧠 Analysis Center</h2>
+              <p className="text-gray-300 text-sm mb-3">
+                Select evidence and describe your theory. Claude will analyze the logical connections.
+              </p>
+              
+              {selectedEvidence.length > 0 && (
+                <div className="mb-4">
+                  <h3 className="text-sm font-semibold text-blue-300 mb-2">Selected Evidence:</h3>
+                  <div className="text-xs text-blue-200">
+                    {selectedEvidence.map(id => {
+                      const evidence = currentCase.evidence.find(e => e.id === id);
+                      return evidence ? evidence.name : '';
+                    }).join(', ')}
+                  </div>
+                </div>
+              )}
+              
+              <textarea
+                value={theory}
+                onChange={(e) => setTheory(e.target.value)}
+                placeholder="Describe your theory about who committed the crime and how..."
+                className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white placeholder-gray-400 text-sm h-24 mb-4"
+              />
+              
+              <button
+                onClick={analyzeEvidence}
+                disabled={loading || !theory.trim() || selectedEvidence.length === 0}
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition-colors disabled:opacity-50"
+              >
+                {loading ? '🧠 Analyzing...' : '🔍 Analyze with Logic AI'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
