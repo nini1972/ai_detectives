@@ -825,6 +825,35 @@ async def generate_dynamic_character_endpoint(case_id: str, role: str, context: 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to generate dynamic character: {str(e)}")
 
+@app.post("/api/generate-visual-scene")
+async def generate_visual_scene_endpoint(case_id: str, scene_context: str, scene_type: str = "manual"):
+    """Generate a visual scene for a specific context"""
+    try:
+        session_id = str(uuid.uuid4())
+        scene = await ai_service.generate_visual_scene(case_id, scene_context, scene_type)
+        
+        if scene:
+            return {"scene": scene.model_dump()}
+        else:
+            raise HTTPException(status_code=500, detail="Failed to generate visual scene")
+            
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to generate visual scene: {str(e)}")
+
+@app.get("/api/case-scenes/{case_id}")
+async def get_case_scenes(case_id: str):
+    """Get all visual scenes for a case"""
+    try:
+        case = await db.cases.find_one({"id": case_id})
+        if not case:
+            raise HTTPException(status_code=404, detail="Case not found")
+        
+        scenes = case.get("visual_scenes", [])
+        return {"scenes": scenes}
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get case scenes: {str(e)}")
+
 @app.post("/api/analyze-evidence")
 async def analyze_evidence(request: AnalysisRequest):
     """Analyze evidence and theory using Logic AI"""
