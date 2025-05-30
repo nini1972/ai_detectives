@@ -416,9 +416,43 @@ function App() {
 
           {/* Evidence & Analysis Panel */}
           <div className="space-y-6">
+            {/* Detective Notebook */}
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+              <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
+                📝 Detective Notebook
+              </h2>
+              <p className="text-gray-300 text-sm mb-3">
+                Keep track of your findings, suspicions, and connections. This is your private notepad.
+              </p>
+              <textarea
+                value={investigationNotes}
+                onChange={(e) => setInvestigationNotes(e.target.value)}
+                placeholder="Write your investigation notes here...
+Example:
+- Lady Margaret seemed nervous when asked about the insurance
+- Dr. Harrison had access to the poison
+- The butler was acting suspicious..."
+                className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-3 text-white placeholder-gray-400 text-sm h-40 resize-none"
+              />
+              <div className="flex justify-between items-center mt-3">
+                <span className="text-xs text-gray-400">
+                  {investigationNotes.length} characters
+                </span>
+                <button
+                  onClick={() => setInvestigationNotes('')}
+                  className="text-xs text-red-300 hover:text-red-400 transition-colors"
+                >
+                  Clear Notes
+                </button>
+              </div>
+            </div>
+
             {/* Evidence */}
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-              <h2 className="text-2xl font-bold text-white mb-4">🔍 Evidence</h2>
+              <h2 className="text-2xl font-bold text-white mb-4">🔍 Evidence Board</h2>
+              <p className="text-gray-300 text-sm mb-3">
+                Click evidence to add to your theory analysis. Selected items will be highlighted.
+              </p>
               <div className="space-y-3">
                 {currentCase.evidence.map((evidence) => (
                   <div 
@@ -428,7 +462,12 @@ function App() {
                     }`}
                     onClick={() => toggleEvidenceSelection(evidence.id)}
                   >
-                    <h3 className="text-md font-semibold text-blue-300 mb-1">{evidence.name}</h3>
+                    <div className="flex justify-between items-start mb-1">
+                      <h3 className="text-md font-semibold text-blue-300">{evidence.name}</h3>
+                      {selectedEvidence.includes(evidence.id) && (
+                        <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded">SELECTED</span>
+                      )}
+                    </div>
                     <p className="text-white text-sm mb-1">{evidence.description}</p>
                     <p className="text-blue-200 text-xs"><strong>Found:</strong> {evidence.location_found}</p>
                     <p className="text-blue-200 text-xs"><strong>Significance:</strong> {evidence.significance}</p>
@@ -444,15 +483,15 @@ function App() {
 
             {/* Theory Analysis */}
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-              <h2 className="text-xl font-bold text-white mb-4">🧠 Analysis Center</h2>
+              <h2 className="text-xl font-bold text-white mb-4">🧠 Final Theory Analysis</h2>
               <p className="text-gray-300 text-sm mb-3">
-                Select evidence and describe your theory. Claude will analyze the logical connections.
+                When you're ready to test a complete theory, describe who did it and why. Claude will analyze the logic.
               </p>
               
               {selectedEvidence.length > 0 && (
                 <div className="mb-4">
                   <h3 className="text-sm font-semibold text-blue-300 mb-2">Selected Evidence:</h3>
-                  <div className="text-xs text-blue-200">
+                  <div className="text-xs text-blue-200 bg-blue-500/10 rounded p-2">
                     {selectedEvidence.map(id => {
                       const evidence = currentCase.evidence.find(e => e.id === id);
                       return evidence ? evidence.name : '';
@@ -464,8 +503,14 @@ function App() {
               <textarea
                 value={theory}
                 onChange={(e) => setTheory(e.target.value)}
-                placeholder="Describe your theory about who committed the crime and how..."
-                className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white placeholder-gray-400 text-sm h-24 mb-4"
+                placeholder="My theory is that [suspect name] committed the murder because...
+
+Include:
+- Who did it
+- How they did it  
+- Why they did it
+- How the evidence supports this"
+                className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white placeholder-gray-400 text-sm h-32 mb-4"
               />
               
               <button
@@ -473,8 +518,12 @@ function App() {
                 disabled={loading || !theory.trim() || selectedEvidence.length === 0}
                 className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition-colors disabled:opacity-50"
               >
-                {loading ? '🧠 Analyzing...' : '🔍 Analyze with Logic AI'}
+                {loading ? '🧠 Claude is Analyzing...' : '🔍 Analyze Theory with Logic AI'}
               </button>
+              
+              <p className="text-xs text-gray-400 mt-2">
+                💡 Tip: Select evidence and write a complete theory for best analysis results
+              </p>
             </div>
           </div>
         </div>
