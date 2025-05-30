@@ -533,6 +533,41 @@ function App() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Crime Scene & Characters */}
           <div className="lg:col-span-2 space-y-6">
+            {/* New Character Discovery Notifications */}
+            {newCharacterNotifications.length > 0 && (
+              <div className="space-y-3">
+                {newCharacterNotifications.map((notification) => (
+                  <div 
+                    key={notification.id}
+                    className="bg-yellow-500/20 border-l-4 border-yellow-500 rounded-lg p-4 animate-fadeInUp"
+                  >
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="text-lg font-semibold text-yellow-300 mb-2 flex items-center">
+                          🔍 New Lead Discovered!
+                        </h3>
+                        <p className="text-white mb-2">
+                          <strong>{notification.discoveredThrough}</strong> mentioned: <strong>{notification.character.name}</strong>
+                        </p>
+                        <p className="text-yellow-200 text-sm italic">"{notification.context}"</p>
+                        <p className="text-gray-300 text-sm mt-2">
+                          {notification.character.name} is now available for questioning below.
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => setNewCharacterNotifications(prev => 
+                          prev.filter(n => n.id !== notification.id)
+                        )}
+                        className="text-yellow-400 hover:text-yellow-300 text-xl"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
             {/* Crime Scene */}
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
@@ -546,27 +581,38 @@ function App() {
 
             {/* Characters */}
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-              <h2 className="text-2xl font-bold text-white mb-4">👥 Suspects</h2>
+              <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
+                👥 Suspects & Persons of Interest
+                <span className="ml-3 text-sm bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
+                  {currentCase.characters.length} Total
+                </span>
+              </h2>
               <div className="grid gap-4">
-                {currentCase.characters.map((character) => (
-                  <div 
-                    key={character.id}
-                    className={`bg-orange-500/20 rounded-lg p-4 cursor-pointer transition-all ${
-                      activeCharacter?.id === character.id ? 'ring-2 ring-orange-400 bg-orange-500/30' : 'hover:bg-orange-500/30'
-                    }`}
-                    onClick={() => {
-                      console.log('Character clicked:', character.name);
-                      setActiveCharacter(character);
-                      console.log('Active character set to:', character);
-                    }}
-                  >
-                    <h3 className="text-lg font-semibold text-orange-300 mb-2">{character.name}</h3>
-                    <p className="text-white text-sm mb-2">{character.description}</p>
-                    <p className="text-orange-200 text-xs"><strong>Background:</strong> {character.background}</p>
-                    <p className="text-orange-200 text-xs"><strong>Alibi:</strong> {character.alibi}</p>
-                    {character.motive && (
-                      <p className="text-red-300 text-xs mt-2"><strong>Possible Motive:</strong> {character.motive}</p>
-                    )}
+                {currentCase.characters.map((character) => {
+                  const isNewCharacter = newCharacterNotifications.some(n => n.character.id === character.id);
+                  
+                  return (
+                    <div 
+                      key={character.id}
+                      className={`bg-orange-500/20 rounded-lg p-4 cursor-pointer transition-all ${
+                        activeCharacter?.id === character.id ? 'ring-2 ring-orange-400 bg-orange-500/30' : 'hover:bg-orange-500/30'
+                      } ${isNewCharacter ? 'ring-2 ring-yellow-400 animate-pulse' : ''}`}
+                      onClick={() => setActiveCharacter(character)}
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="text-lg font-semibold text-orange-300">{character.name}</h3>
+                        {character.is_dynamic && (
+                          <span className="text-xs bg-yellow-500 text-black px-2 py-1 rounded font-bold">
+                            NEW LEAD
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-white text-sm mb-2">{character.description}</p>
+                      <p className="text-orange-200 text-xs"><strong>Background:</strong> {character.background}</p>
+                      <p className="text-orange-200 text-xs"><strong>Alibi:</strong> {character.alibi}</p>
+                      {character.motive && (
+                        <p className="text-red-300 text-xs mt-2"><strong>Possible Motive:</strong> {character.motive}</p>
+                      )}
                     
                     {/* Question Interface - appears only for selected character */}
                     {activeCharacter?.id === character.id && (
