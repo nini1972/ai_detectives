@@ -15,6 +15,12 @@ function App() {
   const [analysis, setAnalysis] = useState('');
   const [gameState, setGameState] = useState('menu'); // menu, playing, analysis
 
+  // Debug: log state changes
+  useEffect(() => {
+    console.log('Game state changed:', gameState);
+    console.log('Current case:', currentCase);
+  }, [gameState, currentCase]);
+
   const generateNewCase = async () => {
     setLoading(true);
     console.log('Starting case generation...', BACKEND_URL);
