@@ -17,7 +17,6 @@ function App() {
 
   const generateNewCase = async () => {
     setLoading(true);
-    console.log('Starting case generation...', BACKEND_URL);
     try {
       const response = await fetch(`${BACKEND_URL}/api/generate-case`, {
         method: 'POST',
@@ -26,15 +25,11 @@ function App() {
         },
       });
       
-      console.log('Response status:', response.status);
-      
       if (!response.ok) {
         throw new Error('Failed to generate case');
       }
       
       const data = await response.json();
-      console.log('Received case data:', data);
-      
       setCurrentCase(data.case);
       setSessionId(data.session_id);
       setGameState('playing');
@@ -42,8 +37,6 @@ function App() {
       setSelectedEvidence([]);
       setTheory('');
       setAnalysis('');
-      
-      console.log('State updated, gameState should be playing');
     } catch (error) {
       console.error('Error generating case:', error);
       alert('Failed to generate new case. Please try again.');
