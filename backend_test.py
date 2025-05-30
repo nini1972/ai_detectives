@@ -78,6 +78,12 @@ class DetectiveGameAPITester:
             print(f"Number of characters: {len(response['case']['characters'])}")
             print(f"Number of evidence items: {len(response['case']['evidence'])}")
             
+            # Check for crime scene image
+            if response['case'].get('crime_scene_image_url'):
+                print(f"✅ Crime scene image generated: {response['case']['crime_scene_image_url']}")
+            else:
+                print("❌ No crime scene image generated")
+            
             # Store first character ID for questioning
             if response['case']['characters']:
                 self.character_id = response['case']['characters'][0]['id']
@@ -107,6 +113,16 @@ class DetectiveGameAPITester:
             print(f"Character name: {response['character_name']}")
             print(f"Response: {response['response']}")
             
+            # Check for visual scene generation
+            if response.get('visual_scene_generated'):
+                print(f"\n🎬 VISUAL SCENE GENERATED!")
+                print(f"  - Title: {response['visual_scene_generated']['title']}")
+                print(f"  - Description: {response['visual_scene_generated']['description'][:100]}...")
+                print(f"  - Image URL: {response['visual_scene_generated']['image_url']}")
+                print(f"  - Generated from: {response['visual_scene_generated']['generated_from']}")
+                print(f"  - Character involved: {response['visual_scene_generated']['character_involved']}")
+                return success, None, True
+            
             # Check for new character discoveries
             if response.get('new_characters_discovered'):
                 print(f"\n🔍 NEW CHARACTERS DISCOVERED: {len(response['new_characters_discovered'])}")
@@ -115,10 +131,113 @@ class DetectiveGameAPITester:
                     print(f"    Discovered through: {discovery['discovered_through']}")
                     print(f"    Context: {discovery['context']}")
                     # Store the new character ID for further questioning
-                    return success, discovery['character']['id']
+                    return success, discovery['character']['id'], False
         
-        return success, None
+        return success, None, False
 
+    def test_visual_testimony_system(self):
+        """Test the visual testimony system"""
+        if not self.case_id or not self.character_id:
+            print("❌ Cannot test visual testimony system - no case or character ID")
+            return False
+            
+        print("\n" + "=" * 50)
+        print("TESTING VISUAL TESTIMONY SYSTEM")
+        print("=" * 50)
+        
+        # Get initial visual scenes count
+        success, case_response = self.run_test(
+            "Get Initial Case State",
+            "GET",
+            f"/api/cases/{self.case_id}",
+            200
+        )
+        
+        if not success:
+            print("❌ Failed to get initial case state")
+            return False
+            
+        initial_scenes_count = len(case_response['case'].get('visual_scenes', []))
+        print(f"Initial visual scenes count: {initial_scenes_count}")
+        
+        # List of questions designed to trigger visual descriptions
+        visual_questions = [
+            "What exactly did you see that night?",
+            "Describe what happened in detail",
+            "Tell me about the scene when you found the body",
+            "What did the confrontation look like?",
+            "Can you describe what you witnessed?",
+            "What did you notice about the crime scene?",
+            "Tell me what you remember seeing"
+        ]
+        
+        scenes_generated = 0
+        
+        # Test with multiple questions to try to generate visual scenes
+        for i, question in enumerate(visual_questions):
+            print(f"\n🔍 Testing visual question {i+1}: '{question}'")
+            
+            success, new_character_id, scene_generated = self.test_question_character(question)
+            
+            if not success:
+                print(f"❌ Question {i+1} failed")
+                continue
+                
+            if scene_generated:
+                scenes_generated += 1
+                print(f"✅ Visual scene generated from question {i+1}!")
+            
+            if new_character_id:
+                print(f"✅ New character discovered! Switching to question this character...")
+                self.character_id = new_character_id
+        
+        # Get final visual scenes count
+        success, case_response = self.run_test(
+            "Get Final Case State",
+            "GET",
+            f"/api/cases/{self.case_id}",
+            200
+        )
+        
+        if not success:
+            print("❌ Failed to get final case state")
+            return False
+            
+        final_scenes_count = len(case_response['case'].get('visual_scenes', []))
+        print(f"\nFinal visual scenes count: {final_scenes_count}")
+        print(f"New visual scenes generated: {final_scenes_count - initial_scenes_count}")
+        
+        # Test getting all scenes for the case
+        success, scenes_response = self.run_test(
+            "Get Case Scenes",
+            "GET",
+            f"/api/case-scenes/{self.case_id}",
+            200
+        )
+        
+        if success:
+            print(f"Retrieved {len(scenes_response['scenes'])} scenes from the gallery API")
+            
+            # Print details of each scene
+            for i, scene in enumerate(scenes_response['scenes']):
+                print(f"\nScene {i+1}:")
+                print(f"  - Title: {scene['title']}")
+                print(f"  - Description: {scene['description'][:100]}...")
+                print(f"  - Generated from: {scene['generated_from']}")
+                if scene.get('character_involved'):
+                    print(f"  - Character involved: {scene['character_involved']}")
+        
+        visual_success = final_scenes_count > initial_scenes_count
+        
+        if visual_success:
+            print("✅ VISUAL TESTIMONY SYSTEM TEST PASSED!")
+            print(f"The investigation generated {final_scenes_count - initial_scenes_count} visual scenes from testimony")
+        else:
+            print("❌ VISUAL TESTIMONY SYSTEM TEST FAILED!")
+            print("No visual scenes were generated during questioning.")
+        
+        return visual_success
+    
     def test_dynamic_character_discovery(self):
         """Test the dynamic character discovery feature"""
         if not self.case_id or not self.character_id:
@@ -160,7 +279,7 @@ class DetectiveGameAPITester:
         for i, question in enumerate(discovery_questions):
             print(f"\n🔍 Testing discovery question {i+1}: '{question}'")
             
-            success, new_character_id = self.test_question_character(question)
+            success, new_character_id, _ = self.test_question_character(question)
             
             if not success:
                 print(f"❌ Question {i+1} failed")
@@ -215,6 +334,12 @@ class DetectiveGameAPITester:
         
         if success:
             print(f"Retrieved case title: {response['case']['title']}")
+            
+            # Check for crime scene image
+            if response['case'].get('crime_scene_image_url'):
+                print(f"✅ Crime scene image present: {response['case']['crime_scene_image_url']}")
+            else:
+                print("❌ No crime scene image present")
         
         return success
         
@@ -258,7 +383,7 @@ class DetectiveGameAPITester:
 
 def main():
     print("=" * 50)
-    print("DUAL-AI DETECTIVE GAME API TESTER")
+    print("AI-POWERED VISUAL TESTIMONY SYSTEM TESTER")
     print("=" * 50)
     
     tester = DetectiveGameAPITester()
@@ -284,6 +409,11 @@ def main():
     if not get_case_ok:
         print("❌ Case retrieval failed")
     
+    # Test visual testimony system
+    visual_ok = tester.test_visual_testimony_system()
+    if not visual_ok:
+        print("❌ Visual testimony system test failed")
+    
     # Test dynamic character discovery feature
     discovery_ok = tester.test_dynamic_character_discovery()
     if not discovery_ok:
@@ -295,12 +425,12 @@ def main():
         print("❌ Evidence analysis failed")
     
     print("\n" + "=" * 50)
-    print("DYNAMIC CHARACTER DISCOVERY FEATURE VERIFICATION:")
-    print("1. The feature allows new characters to be discovered through questioning")
-    print("2. Characters naturally mention other people during interrogation")
-    print("3. New characters are automatically added to the investigation")
-    print("4. Each new character has a unique background, alibi, and potential motive")
-    print("5. The investigation organically expands based on leads")
+    print("VISUAL TESTIMONY SYSTEM VERIFICATION:")
+    print("1. Crime scene visualization is automatically generated for each case")
+    print("2. Character testimony can trigger visual scene generation")
+    print("3. Visual scenes are added to the case gallery")
+    print("4. Visual scenes are linked to the character who described them")
+    print("5. Visual triggers in testimony (e.g., 'I saw...', 'I witnessed...') generate scenes")
     print("=" * 50)
     
     # Print results
