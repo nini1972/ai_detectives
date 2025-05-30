@@ -119,43 +119,86 @@ class DetectiveGameAPITester:
         
         return success, None
 
-    def test_analyze_evidence(self):
-        """Test analyzing evidence and theory"""
-        if not self.case_id:
-            print("❌ Cannot test evidence analysis - no case ID")
+    def test_dynamic_character_discovery(self):
+        """Test the dynamic character discovery feature"""
+        if not self.case_id or not self.character_id:
+            print("❌ Cannot test dynamic character discovery - no case or character ID")
             return False
             
-        # Get first evidence ID
+        print("\n" + "=" * 50)
+        print("TESTING DYNAMIC CHARACTER DISCOVERY")
+        print("=" * 50)
+        
+        # Get initial character count
         success, case_response = self.run_test(
-            "Get Case",
+            "Get Initial Case State",
             "GET",
             f"/api/cases/{self.case_id}",
             200
         )
         
-        if not success or not case_response.get('case', {}).get('evidence'):
-            print("❌ Failed to get evidence for analysis")
+        if not success:
+            print("❌ Failed to get initial case state")
             return False
             
-        evidence_id = case_response['case']['evidence'][0]['id']
+        initial_character_count = len(case_response['case']['characters'])
+        print(f"Initial character count: {initial_character_count}")
         
-        success, response = self.run_test(
-            "Analyze Evidence",
-            "POST",
-            "/api/analyze-evidence",
-            200,
-            data={
-                "case_id": self.case_id,
-                "evidence_ids": [evidence_id],
-                "theory": "I believe the murder was committed by the victim's closest associate due to financial motives."
-            }
+        # List of questions designed to elicit mentions of other people
+        discovery_questions = [
+            "Who else was around that evening?",
+            "Did you see anyone acting suspicious?",
+            "Were there any staff members or visitors present?",
+            "Who else had access to the crime scene?",
+            "Did anyone else know about the victim's activities?"
+        ]
+        
+        current_character_id = self.character_id
+        discovered_characters = []
+        
+        # Test with multiple questions to try to discover new characters
+        for i, question in enumerate(discovery_questions):
+            print(f"\n🔍 Testing discovery question {i+1}: '{question}'")
+            
+            success, new_character_id = self.test_question_character(question)
+            
+            if not success:
+                print(f"❌ Question {i+1} failed")
+                continue
+                
+            if new_character_id:
+                discovered_characters.append(new_character_id)
+                print(f"✅ New character discovered! Switching to question this character...")
+                current_character_id = new_character_id
+                self.character_id = current_character_id
+        
+        # Get final character count
+        success, case_response = self.run_test(
+            "Get Final Case State",
+            "GET",
+            f"/api/cases/{self.case_id}",
+            200
         )
         
-        if success:
-            print(f"Analysis response length: {len(response['analysis'])}")
-            print(f"Analysis excerpt: {response['analysis'][:150]}...")
+        if not success:
+            print("❌ Failed to get final case state")
+            return False
+            
+        final_character_count = len(case_response['case']['characters'])
+        print(f"\nFinal character count: {final_character_count}")
+        print(f"New characters discovered: {final_character_count - initial_character_count}")
         
-        return success
+        discovery_success = final_character_count > initial_character_count
+        
+        if discovery_success:
+            print("✅ DYNAMIC CHARACTER DISCOVERY TEST PASSED!")
+            print(f"The investigation started with {initial_character_count} characters")
+            print(f"and expanded to {final_character_count} characters through questioning.")
+        else:
+            print("❌ DYNAMIC CHARACTER DISCOVERY TEST FAILED!")
+            print("No new characters were discovered during questioning.")
+        
+        return discovery_success
     
     def test_get_case(self):
         """Test retrieving a specific case"""
