@@ -657,6 +657,18 @@ Provide a thorough but focused analysis that helps guide the investigation."""
         response = await self.logic_ai.send_message(UserMessage(text=prompt))
         return response
 
+    async def _generate_crime_scene_background(self, case_id: str):
+        """Generate crime scene image in background without blocking case creation"""
+        try:
+            print(f"Starting background crime scene generation for case {case_id}")
+            crime_scene_url = await self.generate_crime_scene_image(case_id)
+            if crime_scene_url:
+                print(f"Crime scene image generated successfully: {crime_scene_url}")
+            else:
+                print(f"Failed to generate crime scene image for case {case_id}")
+        except Exception as e:
+            print(f"Error in background crime scene generation: {e}")
+
 # Initialize AI service
 ai_service = DualAIDetectiveService()
 
