@@ -284,7 +284,11 @@ function App() {
                     className={`bg-orange-500/20 rounded-lg p-4 cursor-pointer transition-all ${
                       activeCharacter?.id === character.id ? 'ring-2 ring-orange-400 bg-orange-500/30' : 'hover:bg-orange-500/30'
                     }`}
-                    onClick={() => setActiveCharacter(character)}
+                    onClick={() => {
+                      console.log('Character clicked:', character.name);
+                      setActiveCharacter(character);
+                      console.log('Active character set to:', character);
+                    }}
                   >
                     <h3 className="text-lg font-semibold text-orange-300 mb-2">{character.name}</h3>
                     <p className="text-white text-sm mb-2">{character.description}</p>
