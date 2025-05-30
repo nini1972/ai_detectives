@@ -281,19 +281,46 @@ Keep responses conversational and under 150 words."""
         """Analyze evidence and theory using Logic AI"""
         await self.initialize_logic_ai(session_id)
         
-        prompt = f"""Analyze the following detective theory and evidence:
+        # Get case details from database
+        case = await db.cases.find_one({"id": case_id})
+        if not case:
+            return "Error: Case not found for analysis."
+        
+        # Get full evidence details
+        evidence_details = []
+        for evidence_id in evidence_list:
+            for evidence in case["evidence"]:
+                if evidence["id"] == evidence_id:
+                    evidence_details.append(f"- {evidence['name']}: {evidence['description']} (Found: {evidence['location_found']}, Significance: {evidence['significance']})")
+                    break
+        
+        evidence_text = "\n".join(evidence_details) if evidence_details else "No specific evidence selected"
+        
+        prompt = f"""Analyze the following detective theory and evidence for the case "{case['title']}":
 
-Theory: {theory}
-Evidence being considered: {', '.join(evidence_list)}
+CASE CONTEXT:
+- Victim: {case['victim_name']}
+- Setting: {case['setting']}
+- Crime Scene: {case['crime_scene_description']}
+
+DETECTIVE'S THEORY:
+{theory}
+
+EVIDENCE BEING CONSIDERED:
+{evidence_text}
+
+AVAILABLE CHARACTERS:
+{', '.join([char['name'] + ' (' + char['description'] + ')' for char in case['characters']])}
 
 Provide a logical analysis including:
-1. Strengths of this theory
-2. Weaknesses or gaps
-3. What additional evidence might be needed
-4. Logical consistency check
-5. Alternative explanations to consider
+1. **Strengths of this theory** - What evidence supports it?
+2. **Weaknesses or gaps** - What doesn't add up or what's missing?
+3. **Evidence relationships** - How do the selected pieces connect?
+4. **Additional investigation needed** - What questions or evidence would strengthen/weaken this theory?
+5. **Alternative explanations** - Other possible scenarios to consider
+6. **Logical consistency check** - Does the timeline and evidence chain make sense?
 
-Be thorough but concise in your analysis."""
+Provide a thorough but focused analysis that helps guide the investigation."""
 
         response = await self.logic_ai.send_message(UserMessage(text=prompt))
         return response
