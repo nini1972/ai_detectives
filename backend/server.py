@@ -257,14 +257,15 @@ Return ONLY valid JSON with this exact structure:
             created_at=datetime.now()
         )
 
-    async def question_character(self, case_id: str, character_name: str, question: str, session_id: str) -> str:
-        """Have a character respond to questioning using Storyteller AI"""
+    async def question_character(self, case_id: str, character_name: str, question: str, session_id: str) -> dict:
+        """Have a character respond to questioning using Storyteller AI and detect new character mentions"""
         await self.initialize_storyteller(session_id)
+        await self.initialize_logic_ai(session_id)
         
         # Get case details from database
         case = await db.cases.find_one({"id": case_id})
         if not case:
-            return "Error: Case information not available."
+            return {"error": "Case information not available."}
         
         # Find the character details
         character = None
@@ -274,7 +275,10 @@ Return ONLY valid JSON with this exact structure:
                 break
         
         if not character:
-            return "Error: Character not found."
+            return {"error": "Character not found."}
+        
+        # Get all existing character names for context
+        existing_names = [char["name"] for char in case["characters"]]
         
         prompt = f"""You are roleplaying as {character_name} in the detective mystery "{case['title']}".
 
@@ -290,8 +294,11 @@ CASE CONTEXT:
 - Victim: {case['victim_name']}
 - Setting: {case['setting']}
 - Crime scene: {case['crime_scene_description']}
+- Other people involved: {', '.join(existing_names)}
 
 The detective is asking you: "{question}"
+
+IMPORTANT: You may naturally mention other people who could be relevant to the investigation - staff members, visitors, family, neighbors, etc. Be realistic about who might have been around or involved.
 
 Respond in character with:
 - Personality consistent with your background and description
@@ -300,11 +307,58 @@ Respond in character with:
 - Stay true to your alibi and background
 - If you're the culprit, be subtle - don't confess easily but show slight nervousness
 - If innocent, be helpful but may have your own concerns or secrets
+- Naturally mention other people if relevant (e.g., "The gardener was acting strange that day" or "I saw the cook leaving early")
 
 Keep responses conversational, realistic, and under 150 words. Make it feel like a real interrogation."""
 
         response = await self.storyteller_ai.send_message(UserMessage(text=prompt))
-        return response
+        
+        # Now detect if any new characters were mentioned
+        detection_prompt = f"""Analyze the following conversation for mentions of NEW people who could potentially be questioned in this detective investigation.
+
+CONVERSATION:
+Detective: "{question}"
+{character_name}: "{response}"
+
+EXISTING CHARACTERS (do not include these): {', '.join(existing_names)}
+
+Look for mentions of:
+- Staff members (gardener, cook, maid, butler, driver, etc.)
+- Visitors or guests
+- Neighbors or locals
+- Family members not yet listed
+- Service people (delivery person, mailman, doctor, etc.)
+- Anyone else who might have been present or relevant
+
+For each NEW person mentioned, extract:
+1. Their role/title (e.g., "gardener", "cook", "delivery person")
+2. Any descriptive context from the conversation
+
+Return a JSON array of new characters found:
+[
+  {
+    "role": "role/title",
+    "context": "what was said about them"
+  }
+]
+
+If no new people are mentioned, return an empty array: []
+
+Return ONLY the JSON array, nothing else."""
+
+        mentions_response = await self.logic_ai.send_message(UserMessage(text=detection_prompt))
+        
+        # Parse the mentions
+        try:
+            import json
+            new_mentions = json.loads(mentions_response.strip())
+        except:
+            new_mentions = []
+        
+        return {
+            "response": response,
+            "new_character_mentions": new_mentions
+        }
 
     async def analyze_evidence(self, case_id: str, evidence_list: List[str], theory: str, session_id: str) -> str:
         """Analyze evidence and theory using Logic AI"""
