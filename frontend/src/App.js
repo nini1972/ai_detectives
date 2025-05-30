@@ -21,9 +21,19 @@ function App() {
 
   // Load saved games from localStorage on component mount
   useEffect(() => {
+    console.log('Loading saved games from localStorage...');
     const saved = localStorage.getItem('detective_saved_games');
     if (saved) {
-      setSavedGames(JSON.parse(saved));
+      try {
+        const parsedSaves = JSON.parse(saved);
+        console.log('Loaded saved games:', parsedSaves);
+        setSavedGames(parsedSaves);
+      } catch (error) {
+        console.error('Error parsing saved games:', error);
+        localStorage.removeItem('detective_saved_games'); // Clear corrupted data
+      }
+    } else {
+      console.log('No saved games found');
     }
   }, []);
 
