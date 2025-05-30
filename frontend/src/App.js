@@ -572,6 +572,48 @@ function App() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Crime Scene & Characters */}
           <div className="lg:col-span-2 space-y-6">
+            {/* Visual Scene Notifications */}
+            {visualSceneNotifications.length > 0 && (
+              <div className="space-y-3">
+                {visualSceneNotifications.map((notification) => (
+                  <div 
+                    key={notification.id}
+                    className="bg-purple-500/20 border-l-4 border-purple-500 rounded-lg p-4 animate-fadeInUp"
+                  >
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-purple-300 mb-2 flex items-center">
+                          🎬 Visual Scene Generated!
+                        </h3>
+                        <p className="text-white mb-2">
+                          <strong>{notification.character}</strong> described a scene that has been visualized
+                        </p>
+                        <div className="flex gap-4 items-center">
+                          <img 
+                            src={notification.scene.image_url} 
+                            alt={notification.scene.title}
+                            className="w-24 h-18 object-cover rounded border-2 border-purple-400"
+                          />
+                          <div>
+                            <p className="text-purple-200 text-sm italic">"{notification.scene.description}"</p>
+                            <p className="text-gray-300 text-sm mt-1">Added to Visual Gallery</p>
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => setVisualSceneNotifications(prev => 
+                          prev.filter(n => n.id !== notification.id)
+                        )}
+                        className="text-purple-400 hover:text-purple-300 text-xl ml-4"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
             {/* New Character Discovery Notifications */}
             {newCharacterNotifications.length > 0 && (
               <div className="space-y-3">
@@ -612,7 +654,16 @@ function App() {
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
                 🕵️ Crime Scene
               </h2>
-              <div className="bg-red-500/20 rounded-lg p-4 mb-4">
+              {currentCase.crime_scene_image_url && (
+                <div className="mb-4">
+                  <img 
+                    src={currentCase.crime_scene_image_url} 
+                    alt="Crime Scene"
+                    className="w-full h-64 object-cover rounded-lg border-2 border-red-400/50"
+                  />
+                </div>
+              )}
+              <div className="bg-red-500/20 rounded-lg p-4">
                 <h3 className="text-lg font-semibold text-red-300 mb-2">Victim: {currentCase.victim_name}</h3>
                 <p className="text-white">{currentCase.crime_scene_description}</p>
               </div>
