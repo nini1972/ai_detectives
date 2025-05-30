@@ -18,6 +18,7 @@ function App() {
   const [showContextPanel, setShowContextPanel] = useState(false);
   const [savedGames, setSavedGames] = useState([]);
   const [showSaveLoad, setShowSaveLoad] = useState(false);
+  const [newCharacterNotifications, setNewCharacterNotifications] = useState([]);
 
   // Load saved games from localStorage on component mount
   useEffect(() => {
