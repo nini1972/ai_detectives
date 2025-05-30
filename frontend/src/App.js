@@ -275,13 +275,61 @@ function App() {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-white mb-2">{currentCase.title}</h1>
           <p className="text-orange-200 text-lg">{currentCase.setting}</p>
-          <button
-            onClick={() => setGameState('menu')}
-            className="mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
-          >
-            🏠 New Case
-          </button>
+          <div className="flex justify-center gap-4 mt-4">
+            <button
+              onClick={() => setGameState('menu')}
+              className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+            >
+              🏠 New Case
+            </button>
+            <button
+              onClick={() => setShowContextPanel(!showContextPanel)}
+              className={`font-bold py-2 px-4 rounded-lg transition-colors ${
+                showContextPanel 
+                  ? 'bg-green-600 hover:bg-green-700 text-white' 
+                  : 'bg-blue-600 hover:bg-blue-700 text-white'
+              }`}
+            >
+              {showContextPanel ? '📋 Hide Detective Info' : '📋 Show Detective Info'}
+            </button>
+          </div>
         </div>
+
+        {/* Context Panel - Shows all case info for reference while questioning */}
+        {showContextPanel && (
+          <div className="mb-8 bg-gray-800/50 backdrop-blur-md rounded-xl p-6 border border-gray-600">
+            <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
+              📋 Detective Reference Panel
+            </h2>
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* Quick Suspect Reference */}
+              <div>
+                <h3 className="text-lg font-semibold text-blue-300 mb-3">👥 All Suspects</h3>
+                <div className="space-y-2 text-sm">
+                  {currentCase.characters.map((char) => (
+                    <div key={char.id} className="bg-blue-500/10 rounded p-2">
+                      <strong className="text-blue-300">{char.name}</strong>: {char.description}
+                      {char.motive && <div className="text-red-300">Motive: {char.motive}</div>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Quick Evidence Reference */}
+              <div>
+                <h3 className="text-lg font-semibold text-green-300 mb-3">🔍 All Evidence</h3>
+                <div className="space-y-2 text-sm">
+                  {currentCase.evidence.map((ev) => (
+                    <div key={ev.id} className="bg-green-500/10 rounded p-2">
+                      <strong className="text-green-300">{ev.name}</strong>: {ev.description}
+                      <div className="text-gray-300">Found: {ev.location_found}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Crime Scene & Characters */}
