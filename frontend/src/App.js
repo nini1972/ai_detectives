@@ -515,6 +515,12 @@ function App() {
               💾 Save/Load Game
             </button>
             <button
+              onClick={() => setShowVisualGallery(true)}
+              className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+            >
+              🎬 Visual Gallery ({(currentCase.visual_scenes || []).length})
+            </button>
+            <button
               onClick={() => setShowContextPanel(!showContextPanel)}
               className={`font-bold py-2 px-4 rounded-lg transition-colors ${
                 showContextPanel 
