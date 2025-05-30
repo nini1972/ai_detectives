@@ -39,6 +39,8 @@ function App() {
       setSelectedEvidence([]);
       setTheory('');
       setAnalysis('');
+      setInvestigationNotes('');
+      setShowContextPanel(false);
     } catch (error) {
       console.error('Error generating case:', error);
       alert('Failed to generate new case. Please try again.');
