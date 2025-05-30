@@ -212,12 +212,25 @@ Return ONLY valid JSON with this exact structure:
                 title=case_data["title"],
                 setting=case_data["setting"],
                 crime_scene_description=case_data["crime_scene_description"],
+                crime_scene_image_url=None,  # Will be generated after case creation
                 victim_name=case_data["victim_name"],
                 characters=characters,
                 evidence=evidence,
+                visual_scenes=[],
                 solution=case_data["solution"],
                 created_at=datetime.now()
             )
+            
+            # Store case in database first
+            await db.cases.insert_one(case.model_dump())
+            
+            # Generate crime scene image asynchronously
+            try:
+                crime_scene_url = await self.generate_crime_scene_image(case_id)
+                if crime_scene_url:
+                    case.crime_scene_image_url = crime_scene_url
+            except Exception as e:
+                print(f"Failed to generate crime scene image: {e}")
             
             return case
             
