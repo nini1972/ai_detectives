@@ -698,8 +698,11 @@ Include:
                 <p className="text-gray-300 text-sm mb-3">Current case: {currentCase.title}</p>
                 <button
                   onClick={() => {
-                    const saveName = prompt('Enter a name for this save:', `${currentCase.title} - ${new Date().toLocaleDateString()}`);
-                    if (saveName) saveGame(saveName);
+                    const defaultName = `${currentCase.title} - ${new Date().toLocaleDateString()}`;
+                    const saveName = window.prompt('Enter a name for this save:', defaultName);
+                    if (saveName && saveName.trim()) {
+                      saveGame(saveName.trim());
+                    }
                   }}
                   className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
                 >
