@@ -167,6 +167,7 @@ function App() {
       }
       
       const data = await response.json();
+      console.log('Full API response:', data);
       
       // Add to conversations
       const charId = activeCharacter.id;
