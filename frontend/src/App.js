@@ -76,17 +76,23 @@ function App() {
 
   // Load a saved game
   const loadGame = (saveData) => {
-    setCurrentCase(saveData.currentCase);
-    setSessionId(saveData.sessionId);
-    setConversations(saveData.conversations);
-    setInvestigationNotes(saveData.investigationNotes);
-    setSelectedEvidence(saveData.selectedEvidence);
-    setTheory(saveData.theory);
-    setAnalysis(saveData.analysis);
-    setGameState(saveData.gameState);
-    setShowSaveLoad(false);
-    
-    alert(`Loaded: ${saveData.name}`);
+    try {
+      setCurrentCase(saveData.currentCase);
+      setSessionId(saveData.sessionId);
+      setConversations(saveData.conversations || {});
+      setInvestigationNotes(saveData.investigationNotes || '');
+      setSelectedEvidence(saveData.selectedEvidence || []);
+      setTheory(saveData.theory || '');
+      setAnalysis(saveData.analysis || '');
+      setGameState(saveData.gameState || 'playing');
+      setShowSaveLoad(false);
+      
+      alert(`✅ Loaded: ${saveData.name}`);
+      console.log('Game loaded:', saveData.name);
+    } catch (error) {
+      console.error('Error loading game:', error);
+      alert('❌ Failed to load game. Please try again.');
+    }
   };
 
   // Delete a saved game
