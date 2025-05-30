@@ -387,8 +387,11 @@ async def get_case(case_id: str):
         if not case:
             raise HTTPException(status_code=404, detail="Case not found")
         
-        # Remove solution from response
+        # Remove MongoDB ObjectId and solution from response
+        if "_id" in case:
+            del case["_id"]
         case["solution"] = "Hidden until case is solved"
+        
         return {"case": case}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to retrieve case: {str(e)}")
