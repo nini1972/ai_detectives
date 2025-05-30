@@ -1,0 +1,175 @@
+==================================================
+VISUAL DETECTIVE GAME FEATURE TESTER
+==================================================
+Using backend URL: https://52adacca-3bd6-46f3-bde1-2343dfdbb816.preview.emergentagent.com
+
+🔍 Testing Health Endpoint...
+✅ Passed - Status: 200
+Health status: {'status': 'healthy', 'ai_services': 'dual-ai-active'}
+
+==================================================
+TESTING CASE GENERATION WITH CRIME SCENE IMAGE
+==================================================
+
+🔍 Testing Generate Case...
+✅ Passed - Status: 200
+Generated case ID: 3d81ac26-b687-4d26-8945-97751c7b5bf5
+Session ID: 297863e5-ef55-4d71-81e4-223c3d9ffa4e
+Case title: Murder on the Azure Pearl
+Setting: Luxury ocean liner 'Azure Pearl', Mediterranean Sea, 1937
+Victim: Dr. Laurence Caldwell
+Number of characters: 5
+Number of evidence items: 8
+⚠️ No crime scene image in initial response - this is expected as it's generated asynchronously
+First character: Vivian Marwood
+
+Waiting for crime scene image generation (30 seconds)...
+
+🔍 Testing Get Updated Case...
+✅ Passed - Status: 200
+✅ Crime scene image generated successfully: https://v3.fal.media/files/rabbit/fZcDZ1SJtNhIYcR0SDf7D.png
+
+==================================================
+TESTING VISUAL TESTIMONY SYSTEM
+==================================================
+
+🔍 Testing Get Initial Case State...
+✅ Passed - Status: 200
+Initial visual scenes count: 0
+Crime scene image URL: https://v3.fal.media/files/rabbit/fZcDZ1SJtNhIYcR0SDf7D.png
+
+🔍 Testing visual trigger phrase 1: 'What exactly did you see that night?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Vivian Marwood
+Response excerpt: (With a graceful composure, Vivian clasps her hands in her lap, voice calm but tinged with unease.)
+...
+❌ No visual scene generated from this question
+
+🔍 Testing visual trigger phrase 2: 'Describe the confrontation in detail'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Vivian Marwood
+Response excerpt: (With a practiced grace, Vivian folds her gloved hands, voice steady with just a hint of tension.)
+
+...
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Vivian Marwood testified: (With a practiced grace, Vivian folds her gloved hands, voice steady with ...
+  - Image URL: https://v3.fal.media/files/monkey/FBZKVC2JQMyafRX2hOihH.png
+  - Generated from: testimony
+  - Character involved: Vivian Marwood
+
+🔍 Testing visual trigger phrase 3: 'Tell me what happened when you found the body'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Vivian Marwood
+Response excerpt: Detective, I—I discovered Dr. Caldwell entirely by accident. I was on my way to borrow a book—couldn...
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Vivian Marwood testified: Detective, I—I discovered Dr. Caldwell entirely by accident. I was on my w...
+  - Image URL: https://v3.fal.media/files/koala/oUYXaIHIbvMrqlQrmJDIs.png
+  - Generated from: testimony
+  - Character involved: Vivian Marwood
+
+🔍 Testing visual trigger phrase 4: 'What did the scene look like when you arrived?'
+
+🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Vivian Marwood
+Response excerpt: (tilts her chin, voice soft but clear)
+
+It was... dreadful, truly. The library was so quiet, except ...
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Vivian Marwood testified: (tilts her chin, voice soft but clear)
+
+It was... dreadful, truly. The lib...
+  - Image URL: https://v3.fal.media/files/rabbit/sAlVJiTjYrv8PMgwQmZT4.png
+  - Generated from: testimony
+  - Character involved: Vivian Marwood
+
+🔍 Testing Get Final Case State...
+✅ Passed - Status: 200
+
+Final visual scenes count: 3
+New scenes generated during test: 3
+✅ Visual testimony system is working!
+
+==================================================
+TESTING VISUAL GALLERY API
+==================================================
+
+🔍 Testing Get Case Scenes...
+✅ Passed - Status: 200
+Retrieved 3 visual scenes from the gallery API
+
+Scene details:
+
+Scene 1:
+  - Title: Scene: Testimony
+  - Description: Vivian Marwood testified: (With a practiced grace, Vivian folds her gloved hands, voice steady with ...
+  - Generated from: testimony
+  - Character involved: Vivian Marwood
+
+Scene 2:
+  - Title: Scene: Testimony
+  - Description: Vivian Marwood testified: Detective, I—I discovered Dr. Caldwell entirely by accident. I was on my w...
+  - Generated from: testimony
+  - Character involved: Vivian Marwood
+
+Scene 3:
+  - Title: Scene: Testimony
+  - Description: Vivian Marwood testified: (tilts her chin, voice soft but clear)
+
+It was... dreadful, truly. The lib...
+  - Generated from: testimony
+  - Character involved: Vivian Marwood
+
+==================================================
+TESTS PASSED: 10/10
+==================================================
+
+VISUAL FEATURES SUMMARY:
+
+🔍 Testing Get Case...
+✅ Passed - Status: 200
+1. Crime Scene Image: ✅ Working
+2. Testimony Visual Scenes: ✅ Working
+
+==================================================
+TESTING VISUAL GALLERY API
+==================================================
+
+🔍 Testing Get Case Scenes...
+✅ Passed - Status: 200
+Retrieved 3 visual scenes from the gallery API
+
+Scene details:
+
+Scene 1:
+  - Title: Scene: Testimony
+  - Description: Vivian Marwood testified: (With a practiced grace, Vivian folds her gloved hands, voice steady with ...
+  - Generated from: testimony
+  - Character involved: Vivian Marwood
+
+Scene 2:
+  - Title: Scene: Testimony
+  - Description: Vivian Marwood testified: Detective, I—I discovered Dr. Caldwell entirely by accident. I was on my w...
+  - Generated from: testimony
+  - Character involved: Vivian Marwood
+
+Scene 3:
+  - Title: Scene: Testimony
+  - Description: Vivian Marwood testified: (tilts her chin, voice soft but clear)
+
+It was... dreadful, truly. The lib...
+  - Generated from: testimony
+  - Character involved: Vivian Marwood
+3. Visual Gallery API: ✅ Working
