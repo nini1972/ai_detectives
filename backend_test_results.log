@@ -8,22 +8,22 @@ Health status: {'status': 'healthy', 'ai_services': 'dual-ai-active'}
 
 🔍 Testing Generate Case...
 ✅ Passed - Status: 200
-Generated case ID: 9078194e-06ad-482f-b7f3-b0195e935d68
-Session ID: 4bbb63ce-7a37-4bb9-9f5e-e90fd5313dfe
-Case title: Death on the Aegean Star
-Setting: An exclusive luxury cruise ship sailing through the Aegean Sea, summer of 1929
-Victim: Lucien Duval
+Generated case ID: d7116d57-1822-4048-a5b3-4b86943ce49b
+Session ID: 4fbde0bd-b010-44ca-8b83-02d49c2ef7c3
+Case title: Death at Mirador Point
+Setting: Mirador Point, a secluded clifftop mansion overlooking the Pacific Ocean, California, October 1937.
+Victim: Arthur Godfrey
 Number of characters: 5
 Number of evidence items: 8
-✅ Crime scene image generated: https://v3.fal.media/files/tiger/Qd90fYdXmr8vwcBhaP9-u.png
-First character: Vivienne Beaumont
+✅ Crime scene image generated: https://v3.fal.media/files/elephant/E_wR59R7tKBKx1Xlf7SKe.png
+First character: Eleanor Godfrey
 
 Waiting for case to be fully processed...
 
 🔍 Testing Get Case...
 ✅ Passed - Status: 200
-Retrieved case title: Death on the Aegean Star
-✅ Crime scene image present: https://v3.fal.media/files/tiger/Qd90fYdXmr8vwcBhaP9-u.png
+Retrieved case title: Death at Mirador Point
+✅ Crime scene image present: https://v3.fal.media/files/elephant/E_wR59R7tKBKx1Xlf7SKe.png
 
 ==================================================
 TESTING VISUAL TESTIMONY SYSTEM
@@ -37,139 +37,160 @@ Initial visual scenes count: 0
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Vivienne Beaumont
-Response: *Vivienne dabs at her temple with a silk handkerchief, her red lips curled into a faint, tremulous smile.*
+Character name: Eleanor Godfrey
+Response: (Soft sigh, Eleanor smooths her silk cuffs.)
 
-Mais, Detective, what a frightful business this is. Let me see… Last night, I was in the salon, as I said, hosting a rather lively poker game—Annette was there, along with Mr. Hadley and that Russian, Orlov. The clock struck two before we finally packed up. Annette did excuse herself for a moment—she claimed a headache, poor dear, and was gone perhaps fifteen minutes. But I never left the salon, as you’ll see from the steward, Giorgos; he refilled our drinks more than once.
+Detective, I confess the evening is something of a haze, but I shall do my best. After returning from my walk on the terrace just past eight, I went upstairs to change—Mrs. Sullivan, the housekeeper, glimpsed me in the corridor, I believe. I was in my suite for much of the hour, sorting through correspondence and preparing for dinner. I recall hearing muffled voices from Arthur's study; Simon Travers, his business associate, was pressing him on something—I suppose you’ve spoken to Simon?
 
-As for Lucien—mon dieu—I scarcely saw him all evening. He wasn’t in the mood for company, it seemed. Is it true he was clutching a cufflink? How ghastly. Please, Detective, do let me know if there’s anything else I can do. I adored Lucien… once, at least.
-
-🔍 NEW CHARACTERS DISCOVERED: 1
-  - Giorgos Markakis (A slim man in his early thirties, Giorgos stands at average height with olive skin, neatly combed black hair, and attentive dark eyes. His crisp steward’s uniform is always immaculate, and he moves with the precise, deferential manner expected of luxury service personnel. He is polite yet quietly reserved, quick with a respectful nod but slow to volunteer conversation.)
-    Discovered through: Vivienne Beaumont
-    Context: Giorgos; he refilled our drinks more than once during the poker game in the salon
-✅ New character discovered! Switching to question this character...
+At one point, I passed Ivy Barnes on the landing; she seemed rather distraught, though she hid it well. Dr. LeClerc arrived after nine, I think, coat still damp from the fog. I never entered Arthur’s study that evening. I did notice an odd sweet scent in the corridor around half past nine, but thought nothing of it at the time.
 
 🔍 Testing visual question 2: 'Describe what happened in detail'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Giorgos Markakis
-Response: Of course, Detective. I will describe the evening as I remember it.
+Character name: Eleanor Godfrey
+Response: (With a steady, controlled voice tinged with sorrow, Eleanor smooths a silk scarf at her throat before answering.)
 
-After dinner, Monsieur Duval and the others gathered in the main salon for poker—Madame Duval, Mademoiselle Beaumont, Mr. Hadley, and Mr. Orlov joined as well. I was responsible for serving drinks and anything else they required. The game was lively, with laughter, but also some tension—Monsieur Duval could be... demanding at times.
+Of course, Inspector. I spent the evening in my suite preparing for the dinner—going over the seating and reviewing the menu with Mrs. Sullivan. I didn’t see Arthur after tea. Around nine, I stepped into the corridor to ask the housekeeper, Ivy, about fresh linens; she can confirm that much, though we only spoke briefly. I heard Simon Travers’s voice from downstairs—he and Arthur were in heated debate earlier, about that painting Arthur acquired, I believe. 
 
-I remained in the salon almost the entire night, except for brief moments to restock the bar in the pantry or fetch fresh ice. Several guests saw me throughout. I did not go to Monsieur Duval’s suite at any time; after the game broke up, I cleared glasses and made my final rounds with the steward from the upper deck, Andreas.
+The fog was horrendous, and the whole house felt on edge, as though we were waiting for a storm. I noticed Dr. LeClerc arrive late; he seemed out of sorts. But I swear, I never went near the study that night. I kept to my rooms, trying to calm my nerves. Is that… sufficient, Inspector?
 
-If you need, you may speak to any of them—they will confirm I was present. I only wish I could offer more help.
-
-🔍 NEW CHARACTERS DISCOVERED: 1
-  - Andreas Vardalos (A lean man in his late twenties with olive skin, sharp cheekbones, and neatly parted chestnut hair. Andreas carries himself with the practiced discretion of a servant, but his quick brown eyes rarely miss a detail. He speaks softly, with a respectful but reserved demeanor, and his uniform is kept immaculate.)
-    Discovered through: Giorgos Markakis
-    Context: Andreas - worked with Giorgos making final rounds after the poker game broke up
-✅ New character discovered! Switching to question this character...
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Eleanor Godfrey testified: (With a steady, controlled voice tinged with sorrow, Eleanor smooths a si...
+  - Image URL: https://v3.fal.media/files/panda/5b45LvlHuKGA05SCvwDJb.png
+  - Generated from: testimony
+  - Character involved: Eleanor Godfrey
+✅ Visual scene generated from question 2!
 
 🔍 Testing visual question 3: 'Tell me about the scene when you found the body'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Andreas Vardalos
-Response: *Andreas folds his hands neatly in his lap, eyes lowered respectfully.*  
-Of course, Detective. I… I did not find Monsieur Duval’s body myself. Early this morning, I was in the crew galley making tea—some of us had barely rested, after the late poker game. It was Mrs. Beaumont who raised the alarm. She seemed quite agitated, knocking at my shoulder as I passed in the corridor, saying Lucien would not answer her calls or the door. I fetched Captain Petropoulos at once, and together with Giorgos, we forced open the suite—since it was locked, you see.
+Character name: Eleanor Godfrey
+Response: (With a faint tremor in her voice, Eleanor folds her gloved hands in her lap, gaze unfocused as she remembers.)
 
-The sight inside… *he shakes his head slightly.* I kept to the doorway out of respect. The Captain approached the body. The room—it looked almost untouched, save for the chair, and that cufflink Monsieur Duval held so tightly. I had only tidied there yesterday evening—nothing seemed out of place, then.
+I’m not sure I’ll ever forget that moment, Detective. It was around half past nine, I believe. I’d just finished speaking with Mrs. Sullivan—she fusses terribly over the floral arrangements—and went to fetch a shawl from my suite. I heard a peculiar sound—like something heavy falling—in the corridor by Arthur’s study. At first, I thought it was the wind off the sea rattling the windows again, but then Simon Travers appeared at the top of the stairs, looking rather ashen. He’d tried the door and called for Arthur, but there was no answer.
+
+We found it locked. I suppose Arthur treasured his privacy. Dr. LeClerc was summoned and—well, you know the rest. I scarcely remember anything after seeing Arthur at his desk like that. The scent in the room… it was strange, almost sweet.
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Eleanor Godfrey testified: (With a faint tremor in her voice, Eleanor folds her gloved hands in her ...
+  - Image URL: https://v3.fal.media/files/panda/UOKcOt7Mh1fULbhq5b4Qf.png
+  - Generated from: testimony
+  - Character involved: Eleanor Godfrey
+✅ Visual scene generated from question 3!
 
 🔍 Testing visual question 4: 'What did the confrontation look like?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Andreas Vardalos
-Response: [Andreas Vardalos shifts almost imperceptibly, glancing at his hands before meeting your gaze, his voice quiet but steady.]
+Character name: Eleanor Godfrey
+Response: (With carefully measured composure, Eleanor folds her gloved hands in her lap, her gaze distant.)
 
-Confrontation, sir? I wasn’t present for any argument myself—if you mean with Monsieur Duval. But I did sense... tension earlier that evening. Monsieur Duval was abrupt with me when I delivered his brandy. He barely looked up, only muttered about “incompetence.” Later, I heard raised voices from his suite just after midnight, as I passed down the corridor—could have been Madame Duval or perhaps Monsieur Hadley, though I can’t be sure.
+I wish I could tell you, Detective, but I didn’t witness any confrontation, if that's what you're implying. Arthur and I barely exchanged words after I returned from Paris, at least not the sort that rise to dramatics. 
 
-By the time my rounds were finished with Giorgos, the ship was calm. I didn’t see anyone enter or leave Monsieur Duval’s cabin. Forgive me if I seem uncertain; the guests sometimes quarrel, but what happened this time... it’s been unsettling for us all.
+I was in my rooms preparing for the dinner, sorting out which gown might impress upon his guests that the Godfreys still care for appearances. Mrs. Sullivan, the housekeeper, saw me near the corridor just after nine, if that helps. The house was unusually quiet… but if you’re searching for heated words, Simon Travers and Arthur quarrelled just last week over that dreadful Modigliani forgery—tempers in this house were never in short supply.
+
+Honestly, if you’re suggesting I confronted Arthur, you’re mistaken. I had more to lose than to gain—believe me.
 
 🔍 Testing visual question 5: 'Can you describe what you witnessed?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Andreas Vardalos
-Response: (Andreas stands with his cap clutched in his hands, posture neat but eyes wary, voice low.)
+Character name: Eleanor Godfrey
+Response: Of course, detective. I was in my suite dressing for the dinner—I confess, it takes longer these days to find the right ensemble. Around nine, I stepped into the corridor; Mrs. Sullivan, the housekeeper, passed by with fresh linens. I barely glimpsed Arthur all evening. Our rooms are at opposite ends, you see.
 
-Certainly, sir. After the poker game ended, I assisted Mr. Giorgos with clearing the lounge. There were still glasses about from Monsieur Duval and the others—Mr. Hadley, Madame Beaumont, and Madame Duval. Madame Beaumont lingered, a touch unsteady… I helped her back to her cabin while Giorgos tidied up. She insisted she was fine but nearly dropped her purse in the corridor.
+I heard voices in the foyer—Simon Travers was heated about something, arguing over the phone, I believe, though I could not catch every word. Dr. LeClerc was in the library, or claimed to be—I noticed he seemed rather anxious when I passed him later.
 
-I returned to the lounge, finished gathering the decanters, and rendezvoused with Giorgos—he’ll recall. After, I went straight to the crew quarters to set water for tea. I saw Antonis, the night porter, passing by—he might remember the time. I did not see Monsieur Duval again after midnight, nor anyone enter his suite while I was about. Sir, I wish I could be of more help.
+I never entered Arthur’s study. He’d become so... private. The staff were bustling, as always, with Ivy darting about nervously. The weather was wretched—the fog quite unnatural even for Mirador. I thought I smelled... something odd on the landing, but imagined it was some new cleaning solvent.
+
+Is there anything else, detective?
 
 🎬 VISUAL SCENE GENERATED!
   - Title: Scene: Testimony
-  - Description: Andreas Vardalos testified: (Andreas stands with his cap clutched in his hands, posture neat but eye...
-  - Image URL: https://v3.fal.media/files/elephant/_ZXD-ldE9BOVDupjwiOuT.png
+  - Description: Eleanor Godfrey testified: Of course, detective. I was in my suite dressing for the dinner—I confess...
+  - Image URL: https://v3.fal.media/files/zebra/blV8hZfMbRwcqmT67E1a-.png
   - Generated from: testimony
-  - Character involved: Andreas Vardalos
+  - Character involved: Eleanor Godfrey
 ✅ Visual scene generated from question 5!
 
 🔍 Testing visual question 6: 'What did you notice about the crime scene?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Andreas Vardalos
-Response: Andreas bows his head respectfully, his eyes never quite meeting yours. “To be honest, sir, I did not enter Monsieur Duval’s suite myself—only the captain and the ship’s doctor were permitted at first. But when I passed by after sunrise, before the commotion began, the corridor outside was silent. I did notice Mr. Hadley lingering nearby, which I thought strange at that hour.”
+Character name: Eleanor Godfrey
+Response: (With a careful composure, Eleanor folds her gloved hands in her lap, gaze lingering on the window.)
 
-He hesitates, glancing down at his immaculate cuffs. “About the scene—Giorgos later mentioned how untouched it looked. He said only the desk chair had been upturned and that Mr. Duval still grasped something in his hand—a cufflink, I believe. Everything else was in its place. Too much so, perhaps.”
+Detective, I—well, I saw very little, truthfully. By the time I heard about Arthur, your men had already closed off the study. But the housekeeper, Mrs. Sullivan, was in quite a state—she kept muttering about some “awful sweet smell,” which is hardly typical for that room; Arthur despised sweets, you know.
 
-He lowers his voice. “Forgive me, but… I heard Madame Duval visited her husband quite late. She seemed very upset when I saw her retreating to her own cabin soon after midnight.”
+As for the study itself, when I passed by earlier on my way to dress, the windows were always kept shut—Arthur was fastidious about drafts. Strange that one was left open last night. I can’t say I saw anyone enter. Though, come to think of it, Simon Travers seemed unusually tense during dinner preparations and was missing for a spell. Perhaps he was merely out for a smoke. 
+
+I wish I could be of more help. It’s all so terribly unreal.
 
 🎬 VISUAL SCENE GENERATED!
   - Title: Scene: Testimony
-  - Description: Andreas Vardalos testified: Andreas bows his head respectfully, his eyes never quite meeting yours. ...
-  - Image URL: https://v3.fal.media/files/koala/_IYp1H61HJ3Sqw8s5145h.png
+  - Description: Eleanor Godfrey testified: (With a careful composure, Eleanor folds her gloved hands in her lap, gaz...
+  - Image URL: https://v3.fal.media/files/lion/B5Y-YT58anPhBYp2nhcAf.png
   - Generated from: testimony
-  - Character involved: Andreas Vardalos
+  - Character involved: Eleanor Godfrey
 ✅ Visual scene generated from question 6!
 
 🔍 Testing visual question 7: 'Tell me what you remember seeing'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Andreas Vardalos
-Response: (Andreas sits with shoulders straight, hands resting in his lap, eyes searching your face for cues.)
+Character name: Eleanor Godfrey
+Response: Detective, forgive me, but my memory is—well, rather clouded. The night felt peculiarly tense, you see. The fog was beginning to press against the windows, and even the house seemed to settle uneasily as the hour grew later.
 
-Of course, sir. After midnight, I was mostly stationed in the upper lounge, cleaning up after the poker game. Mr. Duval left first—didn’t say much, seemed distracted. I helped Mr. Hadley fetch his coat, and I remember Madame Beaumont lingering by the grand piano, humming softly. Giorgos and I tended to the last few glasses and then escorted Mr. Papadakis, the guest from suite 11—he’d had far too much to drink.
+I was in my suite, just after eight, selecting a gown for dinner. The housekeeper, Mrs. Sullivan, knocked to ask if I needed anything. I remember hearing hurried footsteps in the corridor—possibly Ivy, Arthur’s secretary—she seemed overwrought of late. Around nine, I glanced out and saw Simon Travers pacing on the terrace below, mumbling to himself.
 
-After that, I helped Giorgos check the corridors and saw Annette Duval leave her cabin briefly, rather upset… perhaps a quarrel? I headed to the crew mess—two or three stewards can confirm that—and I didn’t leave again until morning roll call.
+As for Arthur…I didn’t see him all evening after we exchanged a few words before supper. Truthfully, our conversations lately have been…strained.
 
-I… heard a rumor about Mr. Duval arguing with someone near his suite earlier, but I only caught raised voices—couldn’t see who. Does that help?
+If you must know, Dr. LeClerc appeared agitated at dinner, fidgeting with his watch. The atmosphere was… charged, detective. As if something inevitable was about to happen.
 
-🔍 NEW CHARACTERS DISCOVERED: 2
-  - Nikolaos Papadakis (A portly man in his mid-fifties with a bushy mustache, olive skin weathered by the Mediterranean sun, and thick, expressive eyebrows. Often seen in impeccably pressed linen suits, though his shirt is usually a bit rumpled by evening. Boisterous and quick to laughter, especially after a few drinks, but his jovial manner conceals a streak of pride and shrewdness.)
-    Discovered through: Andreas Vardalos
-    Context: Mr. Papadakis, the guest from suite 11—he'd had far too much to drink
+🔍 NEW CHARACTERS DISCOVERED: 1
+  - Arthur Godfrey (A man in his late fifties, Arthur was tall and lean, with thinning silver hair brushed meticulously back from a high forehead. He had piercing grey eyes, often cold and appraising, and an aristocratic bearing heightened by his tailored suits and measured speech. Lately, he wore a pinched, distracted expression, as if perpetually caught between suspicion and worry.)
+    Discovered through: Eleanor Godfrey
+    Context: Eleanor mentions 'Arthur's secretary' (referring to Ivy) and says 'As for Arthur…I didn't see him all evening after we exchanged a few words before supper. Truthfully, our conversations lately have been…strained.' Arthur appears to be a central figure who Eleanor had strained conversations with.
 ✅ New character discovered! Switching to question this character...
 
 🔍 Testing Get Final Case State...
 ✅ Passed - Status: 200
 
-Final visual scenes count: 2
-New visual scenes generated: 2
+Final visual scenes count: 4
+New visual scenes generated: 4
 
 🔍 Testing Get Case Scenes...
 ✅ Passed - Status: 200
-Retrieved 2 scenes from the gallery API
+Retrieved 4 scenes from the gallery API
 
 Scene 1:
   - Title: Scene: Testimony
-  - Description: Andreas Vardalos testified: (Andreas stands with his cap clutched in his hands, posture neat but eye...
+  - Description: Eleanor Godfrey testified: (With a steady, controlled voice tinged with sorrow, Eleanor smooths a si...
   - Generated from: testimony
-  - Character involved: Andreas Vardalos
+  - Character involved: Eleanor Godfrey
 
 Scene 2:
   - Title: Scene: Testimony
-  - Description: Andreas Vardalos testified: Andreas bows his head respectfully, his eyes never quite meeting yours. ...
+  - Description: Eleanor Godfrey testified: (With a faint tremor in her voice, Eleanor folds her gloved hands in her ...
   - Generated from: testimony
-  - Character involved: Andreas Vardalos
+  - Character involved: Eleanor Godfrey
+
+Scene 3:
+  - Title: Scene: Testimony
+  - Description: Eleanor Godfrey testified: Of course, detective. I was in my suite dressing for the dinner—I confess...
+  - Generated from: testimony
+  - Character involved: Eleanor Godfrey
+
+Scene 4:
+  - Title: Scene: Testimony
+  - Description: Eleanor Godfrey testified: (With a careful composure, Eleanor folds her gloved hands in her lap, gaz...
+  - Generated from: testimony
+  - Character involved: Eleanor Godfrey
 ✅ VISUAL TESTIMONY SYSTEM TEST PASSED!
-The investigation generated 2 visual scenes from testimony
+The investigation generated 4 visual scenes from testimony
 
 ==================================================
 TESTING DYNAMIC CHARACTER DISCOVERY
@@ -177,100 +198,107 @@ TESTING DYNAMIC CHARACTER DISCOVERY
 
 🔍 Testing Get Initial Case State...
 ✅ Passed - Status: 200
-Initial character count: 11
+Initial character count: 6
 
 🔍 Testing discovery question 1: 'Who else was around that evening?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Nikolaos Papadakis
-Response: Ah, my dear detective, such unfortunate business, eh? On this ship, it seems everyone becomes a little family—nosy, loud, occasionally charming. That evening? The bar was busy—myself, those British chaps—Hadley and his friend, what’s his name… Orlov was brooding in the corner, nursing something stronger than ouzo, watching everyone like a hawk. Vivienne Beaumont swept through, trailing gossip as usual. The Duval woman—Annette—was seen on deck after midnight, I think, smoking. The Captain made his rounds just before one—a punctual man.
+Character name: Arthur Godfrey
+Response: [Arthur adjusts his cufflinks meticulously, his grey eyes lingering on the fogged window before turning to you. His tone is clipped, precise, but weighed with fatigue.]
 
-The night porter, young Marinos, he keeps an eye on our corridor. I saw Giorgos Markakis, the purser, hurrying—seemed agitated. Other than that… well, who truly knows where people slip off to at sea in the night, eh? But me, I barely made it back to my room. I’ll swear it on my business.
+Aside from myself, Eleanor was, as usual, in her sitting room—she prefers solitude in the evenings. Simon Travers, my...assistant, was meant to catalogue a few pieces in the gallery, though whether he actually accomplished anything is often in doubt. Dr. LeClerc remained in the lounge, nursing his brandy and pontificating on some medical treatise. Mrs. Sullivan, the housekeeper, kept to her routines—she runs the staff with a firmer hand than I ever could. Ivy Barnes, my niece, claims to have taken a walk on the cliffs around dusk, though I didn’t see her return. The gardener left early—the roses, I believe, excuse enough. To my knowledge, no visitors. The household is small, detective, but bear in mind—everyone keeps their own counsel here.
 
-🎬 VISUAL SCENE GENERATED!
-  - Title: Scene: Testimony
-  - Description: Nikolaos Papadakis testified: Ah, my dear detective, such unfortunate business, eh? On this ship, it...
-  - Image URL: https://v3.fal.media/files/elephant/nfve25tuw0rnzJC7CenYW.png
-  - Generated from: testimony
-  - Character involved: Nikolaos Papadakis
+🔍 NEW CHARACTERS DISCOVERED: 1
+  - Silas Dunphy (A wiry man in his late fifties, Silas wears weathered overalls and battered boots, his hands perpetually stained with soil. Sun-creased skin, thinning ash-grey hair tucked beneath a battered cap, and pale blue eyes that miss little, lend him a quiet, wary presence. He speaks sparingly, with a gruff Californian twang, but his silence is observant rather than sullen.)
+    Discovered through: Arthur Godfrey
+    Context: left early—the roses, I believe, excuse enough
+✅ New character discovered! Switching to question this character...
 
 🔍 Testing discovery question 2: 'Did you see anyone acting suspicious?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Nikolaos Papadakis
-Response: Ah, detective, you’ll have to forgive me—last night the ouzo was flowing, and I don’t remember every face so clearly! But suspicious, eh… well, there was a bit of a scene in the lounge before midnight. That British fellow, Hadley, he seemed wound tight, pacing near the bar and shooting glares at Monsieur Duval. And Madame Beaumont—always with the gloved hands, always watching—she slipped out of the games room earlier than usual, hardly said goodnight. 
+Character name: Silas Dunphy
+Response: (Silas shifts his weight, cap pulled low, thumbs hooked in the belt loops of his overalls. He speaks slow and measured, eyes darting briefly towards the heavy coastal mist hanging beyond the window.)
 
-The crew, they are discreet, but I thought I saw young Marinos—our steward, yes?—hovering near Duval’s corridor much later than his shift should end. As for myself, I was locked in battle over backgammon dice. You can ask Blythe-Smythe and his friend; they grumbled every time I rolled double sixes! But after that, I swear, I saw none but the porter as I made my unsteady way to my linens.
+“Suspicious, you say? Well… this house’s always got folks movin’ about where they shouldn’t. That afternoon, I seen Miss Ivy—housemaid—loiterin’ by the study door earlier than her usual dustin’ hour. She looked jumpy, like she’d heard a fox in the henhouse. Simon Travers too—pacing out back, near the old yew, muttering up a storm. Never did like the salt air, that one. As for me, I left just after four—had to fetch supplies Mr. Godfrey asked for, so I weren’t here when… well, when it happened. Folks in town can vouch fer that. But if you’re askin’, there was a tension round here all week. Somethin’ was brewing, sure as fog off the bluff.”
 
 🎬 VISUAL SCENE GENERATED!
   - Title: Scene: Testimony
-  - Description: Nikolaos Papadakis testified: Ah, detective, you’ll have to forgive me—last night the ouzo was flowi...
-  - Image URL: https://v3.fal.media/files/penguin/gOH4g4qYoGTQwVzV1hthA.png
+  - Description: Silas Dunphy testified: (Silas shifts his weight, cap pulled low, thumbs hooked in the belt loops of...
+  - Image URL: https://v3.fal.media/files/elephant/_8yIQS4YYdt0TGKe0Cq5P.png
   - Generated from: testimony
-  - Character involved: Nikolaos Papadakis
+  - Character involved: Silas Dunphy
 
 🔍 Testing discovery question 3: 'Were there any staff members or visitors present?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Nikolaos Papadakis
-Response: Ah, detective, such a tragedy, eh? I tell you, I still cannot believe what happened to poor Monsieur Duval. As for staff or visitors—well, the corridor was fairly quiet when I returned from the bar, just before three in the morning. The night porter, Andreas—I think his name is Andreas Vardalos—was making his rounds, mopping as always, humming that awful tune. I remember because he nodded to me as I fumbled with my key.
+Character name: Silas Dunphy
+Response: *Silas shifts on his boots, cap pulled low, eyes flicking up just once before fixing on a patch of floor.*
 
-Now, about visitors... Hmm. Earlier in the evening, I did see that Englishman, Mister Hadley, loitering near Lucien’s door—what business he had there, I could not say. And the little lad, Christos—my nephew—he’s always running about, though not at such a late hour, I hope! But directly? No, no one entered Duval’s suite while I was nearby, at least. The place was dead quiet. More’s the pity.
+Aye, there were folks about. Mrs. Sullivan was in and outta the kitchen most the mornin’—heard her clatterin’ pans ‘round noon. Ivy Barnes, she was tidyin’ the west wing, hummin’ like usual. Mr. Travers poked round the gardens after lunch, stampin’ mud on the cobbles—never met a man who liked his walks more. Dr. LeClerc was meant to check on Mr. Godfrey’s nerves, but I didn’t see him myself. Mrs. Godfrey stayed shut up with her books from midday on, at least so far as I noticed.
+
+No outsiders came far as I saw. Just the house folks. Wasn’t much unusual, not before I left for town. If you’re askin’ ‘bout strangers, well—Mirador don’t get ‘em, what with the fog and all.
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Silas Dunphy testified: *Silas shifts on his boots, cap pulled low, eyes flicking up just once befor...
+  - Image URL: https://v3.fal.media/files/zebra/TTfMlmZWS8zW6_SA4mplE.png
+  - Generated from: testimony
+  - Character involved: Silas Dunphy
 
 🔍 Testing discovery question 4: 'Who else had access to the crime scene?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Nikolaos Papadakis
-Response: *Papadakis leans forward, his heavy gold ring glinting as he gestures for emphasis, voice a gruff baritone with that familiar Athenian rasp—half offended, half concerned.*
+Character name: Silas Dunphy
+Response: (He takes off his battered cap, rubbing a muddy thumb along its brim, eyes steady on the floorboards rather than your face.)
 
-Detective, Lucien’s suite, eh? Well, it’s not the type of place just anyone could wander into—not with that damned Frenchman’s obsession for privacy. But… if you must know, staff like young Giorgos—the steward for this corridor—he has a master key, naturally. The porter, Nikos—steady lad, always prowling about at odd hours—he’d know who came and went at night. Annette, Lucien’s wife, visited him sometimes late; I’ve glimpsed her slipping past my door more than once.
+Well, reckon that's a question for Mrs. Sullivan mostly—housekeeper keeps tighter tabs on keys than the rest of us. Study's doors are usually locked unless Mr. Godfrey’s in there or expecting someone. Far as I know, only Mrs. Sullivan, Mr. Travers—Arthur’s assistant—and sometimes Mrs. Godfrey herself had their own keys. Rest of us? We knock, and that’s that.
 
-Aside from them? Maybe that Englishman, Hadley—the art collector, always loitering about Lucien like a stray dog. Otherwise, unless someone’s found a way to jimmy those locks, it takes an invitation… or a key, detective. 
+That said... Ivy—Miss Barnes—runs errands up there, tea and such, though mostly with someone else present. Saw Dr. LeClerc coming and going too, these past days, what with Arthur’s complaints about his nerves.
 
-*He shrugs, mustache twitching in sympathy beneath the concern in his eyes.*
+Can’t say more than that. Wasn’t my place—I had my hands full outdoors. Didn’t see anyone slip inside who shouldn’t, and that’s the truth.
 
 🔍 Testing discovery question 5: 'Did anyone else know about the victim's activities?'
 
 🔍 Testing Question Character...
 ✅ Passed - Status: 200
-Character name: Nikolaos Papadakis
-Response: *Papadakis leans back in his chair with a heavy sigh, brushing crumbs from his vest and smoothing his mustache, eyes glinting with genuine concern.*
+Character name: Silas Dunphy
+Response: *Silas shifts his weight, the toes of one boot scuffing the tiled floor. He doesn’t meet your eyes at first, gaze flicking instead to the window and the persistent creep of coastal fog.*
 
-Detective, on a ship like this, you know—nothing stays private for long. Lucien was always on display, surrounded by admirers and…let’s just say, opportunists. His wife, Madame Annette, was with him most nights, though I heard they quarreled yesterday after dinner. The Russian, Orlov, he was sniffing around Lucien all week—something about a painting. And, ah, young Andreas, the steward—he always seemed to know when to show up with more drinks, if you understand me. 
+Mr. Godfrey kept his cards close, if y’ask me. Most days he’d hole up in that study, sometimes call for Mrs. Sullivan about the ledgers or for tea. This morning, though, I did hear him bickering with Simon Travers—weren’t the first time, won’t be the last. Simon’s got ideas about the grounds—Arthur never liked being told what to do. And Mrs. Godfrey, well, she passed by the rose garden around three. She seemed… distracted. As for the rest—Dr. LeClerc stuck to his own business, and Ivy, the maid, was fussing with linens upstairs last I noticed. Folks keep to their roles around here, but the walls? They don’t lack for listening.
 
-But Lucien? He liked to keep some cards close to his chest. If anyone knew his movements, it would be Annette… or perhaps that sly Englishman, Hadley. But me? Last night I was with Reginald and Percival, losing more drachmas than I care to admit. The night porter can vouch for me.
-
-🔍 NEW CHARACTERS DISCOVERED: 1
-  - Georgios Stavrakis (A wiry man in his early forties with watchful dark eyes and neatly slicked black hair, Georgios carries himself with the quiet precision of a lifelong service worker. His uniform is immaculate, his posture attentive, and he speaks with the gentle formality of one accustomed to blending into the background. Though reserved, he is unfailingly polite and possesses a subtle, dry wit.)
-    Discovered through: Nikolaos Papadakis
-    Context: mentioned as someone who can vouch for Papadakis's whereabouts, implying they were present and observant during the night
-✅ New character discovered! Switching to question this character...
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Silas Dunphy testified: *Silas shifts his weight, the toes of one boot scuffing the tiled floor. He ...
+  - Image URL: https://v3.fal.media/files/penguin/8hK53DQy27t6HGPre64Mb.png
+  - Generated from: testimony
+  - Character involved: Silas Dunphy
 
 🔍 Testing Get Final Case State...
 ✅ Passed - Status: 200
 
-Final character count: 15
-New characters discovered: 4
+Final character count: 7
+New characters discovered: 1
 ✅ DYNAMIC CHARACTER DISCOVERY TEST PASSED!
-The investigation started with 11 characters
-and expanded to 15 characters through questioning.
+The investigation started with 6 characters
+and expanded to 7 characters through questioning.
 
 🔍 Testing Get Case...
 ✅ Passed - Status: 200
 
 🔍 Testing Analyze Evidence...
 ✅ Passed - Status: 200
-Analysis response length: 4163
-Analysis excerpt: ## LOGICAL ANALYSIS: "Death on the Aegean Star"
+Analysis response length: 3575
+Analysis excerpt: # LOGICAL ANALYSIS: "Death at Mirador Point"
 
-### 1. **STRENGTHS OF THIS THEORY**
+## 1. **Strengths of This Theory**
 
-**Limited Support Available:**
-- The jeweled cufflink could pote...
+**Limited but Relevant Support:**
+- The locked room scenario suggest...
 
 ==================================================
 VISUAL TESTIMONY SYSTEM VERIFICATION:
