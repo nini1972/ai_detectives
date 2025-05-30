@@ -97,10 +97,16 @@ function App() {
 
   // Delete a saved game
   const deleteSave = (saveId) => {
-    if (confirm('Are you sure you want to delete this saved game?')) {
-      const updatedSaves = savedGames.filter(save => save.id !== saveId);
-      setSavedGames(updatedSaves);
-      localStorage.setItem('detective_saved_games', JSON.stringify(updatedSaves));
+    if (window.confirm('Are you sure you want to delete this saved game?')) {
+      try {
+        const updatedSaves = savedGames.filter(save => save.id !== saveId);
+        localStorage.setItem('detective_saved_games', JSON.stringify(updatedSaves));
+        setSavedGames(updatedSaves);
+        console.log('Game deleted, remaining saves:', updatedSaves.length);
+      } catch (error) {
+        console.error('Error deleting save:', error);
+        alert('❌ Failed to delete save. Please try again.');
+      }
     }
   };
 
