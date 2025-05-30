@@ -745,7 +745,6 @@ function App() {
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
                 🕵️ Crime Scene
               </h2>
-              {console.log('Current case crime scene URL:', currentCase.crime_scene_image_url)}
               {currentCase.crime_scene_image_url && (
                 <div className="mb-4">
                   <img 
