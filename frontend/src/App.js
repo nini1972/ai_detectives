@@ -14,6 +14,8 @@ function App() {
   const [theory, setTheory] = useState('');
   const [analysis, setAnalysis] = useState('');
   const [gameState, setGameState] = useState('menu'); // menu, playing, analysis
+  const [investigationNotes, setInvestigationNotes] = useState('');
+  const [showContextPanel, setShowContextPanel] = useState(false);
 
   const generateNewCase = async () => {
     setLoading(true);
