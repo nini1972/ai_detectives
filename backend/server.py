@@ -360,6 +360,93 @@ Return ONLY the JSON array, nothing else."""
             "new_character_mentions": new_mentions
         }
 
+    async def generate_dynamic_character(self, case_id: str, role: str, context: str, session_id: str) -> Character:
+        """Generate a new character based on a mention in conversation"""
+        await self.initialize_storyteller(session_id)
+        await self.initialize_logic_ai(session_id)
+        
+        # Get case details
+        case = await db.cases.find_one({"id": case_id})
+        if not case:
+            return None
+            
+        prompt = f"""Create a new character for the detective mystery "{case['title']}" based on this mention:
+
+CASE CONTEXT:
+- Title: {case['title']}
+- Setting: {case['setting']}
+- Victim: {case['victim_name']}
+- Crime scene: {case['crime_scene_description']}
+
+CHARACTER MENTION:
+- Role: {role}
+- Context: {context}
+
+Create a detailed character with:
+1. A realistic name that fits the setting/time period
+2. Physical description appropriate for their role
+3. Background and how they relate to the case/location
+4. A believable alibi for the time of the crime
+5. A potential motive (even if weak) that could make them a person of interest
+6. Make them a viable suspect but not obviously guilty
+
+Return ONLY a JSON object with this structure:
+{{
+  "name": "Full Name",
+  "description": "Brief physical description and personality",
+  "background": "Their role, history, and connection to the case",
+  "alibi": "What they claim they were doing during the crime",
+  "motive": "Potential reason they might be involved (or 'No clear motive')"
+}}"""
+
+        response = await self.storyteller_ai.send_message(UserMessage(text=prompt))
+        
+        # Parse the character data
+        try:
+            import json
+            char_data = json.loads(response.strip())
+            
+            # Validate with Logic AI
+            validation_prompt = f"""Review this dynamically generated character for logical consistency:
+
+CASE: {case['title']}
+SETTING: {case['setting']}
+NEW CHARACTER: {json.dumps(char_data, indent=2)}
+ORIGINAL MENTION: "{context}"
+
+Check:
+1. Does the character fit the setting and time period?
+2. Is their background realistic for their role?
+3. Does their alibi make sense?
+4. Is their potential motive believable?
+5. Do they add value to the investigation?
+
+If valid, respond with: VALID
+If issues found, suggest improvements in this format: 
+ISSUES: [list problems]
+SUGGESTIONS: [improvements]"""
+
+            validation = await self.logic_ai.send_message(UserMessage(text=validation_prompt))
+            
+            if "VALID" in validation:
+                character = Character(
+                    id=str(uuid.uuid4()),
+                    name=char_data["name"],
+                    description=char_data["description"],
+                    background=char_data["background"],
+                    alibi=char_data["alibi"],
+                    motive=char_data.get("motive"),
+                    is_culprit=False  # Dynamic characters are never the original culprit
+                )
+                return character
+            else:
+                print(f"Character validation failed: {validation}")
+                return None
+                
+        except Exception as e:
+            print(f"Error generating dynamic character: {e}")
+            return None
+
     async def analyze_evidence(self, case_id: str, evidence_list: List[str], theory: str, session_id: str) -> str:
         """Analyze evidence and theory using Logic AI"""
         await self.initialize_logic_ai(session_id)
