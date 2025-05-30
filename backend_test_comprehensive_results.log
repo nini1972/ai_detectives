@@ -51,3 +51,37 @@ Response: Detective, I assure you, my evening was tragically dull compared to wh
 🔍 Testing visual question: 'Describe what happened in detail'
 
 🔍 Testing Question Character...
+✅ Passed - Status: 200
+Character name: Vivienne Starling
+Response: Detective, I wish I could be of more use, but as I told Inspector Mallory—I was in my room preparing for bed. The storm rattled my nerves; I remember checking the windows were latched. Elsie brought my cocoa just before midnight, and she will confirm that I was alone.
+
+I heard raised voices earlier that evening—Reginald and Charles Blackwood, the business partner. There was tension, undoubtedly, but around here, that’s hardly unusual. Eleanor Finch seemed unsettled, too—pacing the halls with that notebook of hers after supper.
+
+I did hear someone hurried along the corridor, shoes clicking on the marble, but I couldn’t see who in the dim light. Honestly, with the electricity flickering, the whole house felt on edge. If you wish to know more, perhaps Charles or Eleanor could clarify their own whereabouts—I only know I was not near the study.
+
+🎬 VISUAL SCENE GENERATED!
+  - Title: Scene: Testimony
+  - Description: Vivienne Starling testified: Detective, I wish I could be of more use, but as I told Inspector Mallo ...
+  - Image URL: https://v3.fal.media/files/rabbit/Wtr-hfFTXe0snVdd_UqNV.png
+  - Generated from: testimony
+  - Character involved: Vivienne Starling
+✅ Visual scene generated from visual trigger question!
+
+👤 NEW CHARACTERS DISCOVERED: 1
+  - Inspector Lionel Mallory
+    Discovered through: Vivienne Starling
+    Context: Vivienne mentions 'as I told Inspector Mallory' - indicating she has already spoken to Inspector Mallory about these events
+
+🔍 Testing Get Final Case State...
+✅ Passed - Status: 200
+
+Final visual scenes count: 0
+New scenes generated during test: 0
+❌ No new visual scenes were generated
+
+🔍 Testing Get Case for Evidence IDs...
+✅ Passed - Status: 200
+
+==================================================
+TESTS PASSED: 8/8
+==================================================
