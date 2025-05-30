@@ -58,14 +58,26 @@ class Evidence(BaseModel):
     significance: str
     is_key_evidence: bool = False
 
+class VisualScene(BaseModel):
+    id: str
+    title: str
+    description: str
+    image_url: str
+    generated_from: str  # "crime_scene", "testimony", "evidence_analysis"
+    context: str  # What triggered this scene generation
+    character_involved: Optional[str] = None
+    timestamp: datetime
+
 class DetectiveCase(BaseModel):
     id: str
     title: str
     setting: str
     crime_scene_description: str
+    crime_scene_image_url: Optional[str] = None
     victim_name: str
     characters: List[Character]
     evidence: List[Evidence]
+    visual_scenes: List[VisualScene] = []
     solution: str
     created_at: datetime
     difficulty: str = "medium"
