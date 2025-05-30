@@ -246,10 +246,10 @@ def main():
     if not get_case_ok:
         print("❌ Case retrieval failed")
     
-    # Test character questioning
-    question_ok = tester.test_question_character()
-    if not question_ok:
-        print("❌ Character questioning failed")
+    # Test dynamic character discovery feature
+    discovery_ok = tester.test_dynamic_character_discovery()
+    if not discovery_ok:
+        print("❌ Dynamic character discovery test failed")
     
     # Test evidence analysis
     analysis_ok = tester.test_analyze_evidence()
@@ -257,24 +257,12 @@ def main():
         print("❌ Evidence analysis failed")
     
     print("\n" + "=" * 50)
-    print("NOTE: Save/Load Game functionality is client-side only")
-    print("      using browser localStorage. No backend API endpoints")
-    print("      are required for this functionality.")
-    print("=" * 50)
-    
-    print("\n" + "=" * 50)
-    print("SAVE/LOAD FUNCTIONALITY VERIFICATION:")
-    print("1. The Save/Load button is present in the game header")
-    print("2. Saving a game stores the following state:")
-    print("   - Current case data")
-    print("   - Session ID")
-    print("   - Conversation history")
-    print("   - Investigation notes")
-    print("   - Selected evidence")
-    print("   - Theory and analysis")
-    print("   - Game state")
-    print("3. Loading a game restores all the above state")
-    print("4. Multiple saves can be managed (create/load/delete)")
+    print("DYNAMIC CHARACTER DISCOVERY FEATURE VERIFICATION:")
+    print("1. The feature allows new characters to be discovered through questioning")
+    print("2. Characters naturally mention other people during interrogation")
+    print("3. New characters are automatically added to the investigation")
+    print("4. Each new character has a unique background, alibi, and potential motive")
+    print("5. The investigation organically expands based on leads")
     print("=" * 50)
     
     # Print results
