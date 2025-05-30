@@ -180,6 +180,35 @@ function App() {
         ]
       }));
       
+      // Handle dynamic character discovery
+      if (data.new_characters_discovered && data.new_characters_discovered.length > 0) {
+        // Update the current case with new characters
+        setCurrentCase(prev => ({
+          ...prev,
+          characters: [...prev.characters, ...data.new_characters_discovered.map(discovery => discovery.character)]
+        }));
+        
+        // Show notifications for new characters
+        const notifications = data.new_characters_discovered.map(discovery => ({
+          id: Date.now() + Math.random(),
+          character: discovery.character,
+          discoveredThrough: discovery.discovered_through,
+          context: discovery.context,
+          timestamp: Date.now()
+        }));
+        
+        setNewCharacterNotifications(prev => [...prev, ...notifications]);
+        
+        // Auto-dismiss notifications after 10 seconds
+        setTimeout(() => {
+          setNewCharacterNotifications(prev => 
+            prev.filter(notification => 
+              !notifications.some(newNotif => newNotif.id === notification.id)
+            )
+          );
+        }, 10000);
+      }
+      
       setQuestion('');
     } catch (error) {
       console.error('Error questioning character:', error);
