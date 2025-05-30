@@ -689,6 +689,8 @@ function App() {
                     src={currentCase.crime_scene_image_url} 
                     alt="Crime Scene"
                     className="w-full h-64 object-cover rounded-lg border-2 border-red-400/50"
+                    onLoad={() => console.log('Crime scene image loaded successfully')}
+                    onError={(e) => console.error('Crime scene image failed to load:', e.target.src)}
                   />
                 </div>
               )}
