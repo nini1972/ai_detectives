@@ -256,6 +256,15 @@ function App() {
               ) : '🎯 Start New Investigation'}
             </button>
             
+            <div className="flex gap-4 mt-6 justify-center">
+              <button
+                onClick={() => setShowSaveLoad(true)}
+                className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              >
+                💾 Load Saved Game
+              </button>
+            </div>
+            
             {loading && (
               <div className="mt-6 bg-blue-500/20 backdrop-blur-md rounded-lg p-6 border border-blue-400/30">
                 <div className="text-center">
