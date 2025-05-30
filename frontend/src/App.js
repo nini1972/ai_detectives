@@ -115,7 +115,12 @@ function App() {
 
   const generateNewCase = async () => {
     setLoading(true);
+    console.log('Starting case generation...');
+    console.log('Backend URL:', BACKEND_URL);
+    
     try {
+      console.log('Making API call to:', `${BACKEND_URL}/api/generate-case`);
+      
       const response = await fetch(`${BACKEND_URL}/api/generate-case`, {
         method: 'POST',
         headers: {
@@ -123,11 +128,22 @@ function App() {
         },
       });
       
+      console.log('Response received:', response.status, response.statusText);
+      
       if (!response.ok) {
-        throw new Error('Failed to generate case');
+        const errorText = await response.text();
+        console.error('API Error:', errorText);
+        throw new Error(`Failed to generate case: ${response.status} ${response.statusText}`);
       }
       
       const data = await response.json();
+      console.log('Case data received:', data);
+      
+      if (!data.case) {
+        throw new Error('No case data in response');
+      }
+      
+      console.log('Setting case state...');
       setCurrentCase(data.case);
       setSessionId(data.session_id);
       setGameState('playing');
@@ -137,10 +153,14 @@ function App() {
       setAnalysis('');
       setInvestigationNotes('');
       setShowContextPanel(false);
+      
+      console.log('Case generation completed successfully!');
+      
     } catch (error) {
       console.error('Error generating case:', error);
-      alert('Failed to generate new case. Please try again.');
+      alert(`Failed to generate new case: ${error.message}`);
     } finally {
+      console.log('Setting loading to false');
       setLoading(false);
     }
   };
