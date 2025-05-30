@@ -1,0 +1,38 @@
+==================================================
+AI-POWERED VISUAL TESTIMONY SYSTEM TESTER
+==================================================
+
+🔍 Testing Health Endpoint...
+✅ Passed - Status: 200
+Health status: {'status': 'healthy', 'ai_services': 'dual-ai-active'}
+
+🔍 Testing Generate Case...
+✅ Passed - Status: 200
+Generated case ID: 9078194e-06ad-482f-b7f3-b0195e935d68
+Session ID: 4bbb63ce-7a37-4bb9-9f5e-e90fd5313dfe
+Case title: Death on the Aegean Star
+Setting: An exclusive luxury cruise ship sailing through the Aegean Sea, summer of 1929
+Victim: Lucien Duval
+Number of characters: 5
+Number of evidence items: 8
+✅ Crime scene image generated: https://v3.fal.media/files/tiger/Qd90fYdXmr8vwcBhaP9-u.png
+First character: Vivienne Beaumont
+
+Waiting for case to be fully processed...
+
+🔍 Testing Get Case...
+✅ Passed - Status: 200
+Retrieved case title: Death on the Aegean Star
+✅ Crime scene image present: https://v3.fal.media/files/tiger/Qd90fYdXmr8vwcBhaP9-u.png
+
+==================================================
+TESTING VISUAL TESTIMONY SYSTEM
+==================================================
+
+🔍 Testing Get Initial Case State...
+✅ Passed - Status: 200
+Initial visual scenes count: 0
+
+🔍 Testing visual question 1: 'What exactly did you see that night?'
+
+🔍 Testing Question Character...
