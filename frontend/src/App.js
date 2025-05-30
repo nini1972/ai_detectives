@@ -182,6 +182,8 @@ function App() {
       
       // Handle dynamic character discovery
       if (data.new_characters_discovered && data.new_characters_discovered.length > 0) {
+        console.log('New characters discovered:', data.new_characters_discovered);
+        
         // Update the current case with new characters
         setCurrentCase(prev => ({
           ...prev,
@@ -197,6 +199,7 @@ function App() {
           timestamp: Date.now()
         }));
         
+        console.log('Setting notifications:', notifications);
         setNewCharacterNotifications(prev => [...prev, ...notifications]);
         
         // Auto-dismiss notifications after 10 seconds
