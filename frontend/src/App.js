@@ -99,6 +99,67 @@ function App() {
     }
   };
 
+  // Function to refresh case data and check for new images
+  const refreshCaseData = async () => {
+    if (!currentCase?.id) return;
+    
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/cases/${currentCase.id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        const updatedCase = data.case;
+        
+        // Check if crime scene image was added
+        if (!currentCase.crime_scene_image_url && updatedCase.crime_scene_image_url) {
+          console.log('Crime scene image now available:', updatedCase.crime_scene_image_url);
+          setCurrentCase(prev => ({
+            ...prev,
+            crime_scene_image_url: updatedCase.crime_scene_image_url
+          }));
+        }
+        
+        // Check if new visual scenes were added
+        const currentScenesCount = (currentCase.visual_scenes || []).length;
+        const updatedScenesCount = (updatedCase.visual_scenes || []).length;
+        
+        if (updatedScenesCount > currentScenesCount) {
+          console.log('New visual scenes detected:', updatedScenesCount - currentScenesCount);
+          setCurrentCase(prev => ({
+            ...prev,
+            visual_scenes: updatedCase.visual_scenes || []
+          }));
+        }
+      }
+    } catch (error) {
+      console.error('Error refreshing case data:', error);
+    }
+  };
+
+  // Auto-refresh case data when there's no crime scene image
+  useEffect(() => {
+    if (currentCase?.id && !currentCase.crime_scene_image_url) {
+      console.log('Starting auto-refresh for crime scene image...');
+      const interval = setInterval(refreshCaseData, 10000); // Check every 10 seconds
+      
+      // Stop checking after 2 minutes
+      const timeout = setTimeout(() => {
+        clearInterval(interval);
+        console.log('Stopped auto-refresh for crime scene image');
+      }, 120000);
+      
+      return () => {
+        clearInterval(interval);
+        clearTimeout(timeout);
+      };
+    }
+  }, [currentCase?.id, currentCase?.crime_scene_image_url]);
+
   // Delete a saved game
   const deleteSave = (saveId) => {
     if (window.confirm('Are you sure you want to delete this saved game?')) {
