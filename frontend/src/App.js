@@ -40,26 +40,38 @@ function App() {
       return;
     }
 
-    const gameData = {
-      id: Date.now().toString(),
-      name: saveName || `Case: ${currentCase.title}`,
-      timestamp: new Date().toLocaleString(),
-      currentCase,
-      sessionId,
-      conversations,
-      investigationNotes,
-      selectedEvidence,
-      theory,
-      analysis,
-      gameState
-    };
+    try {
+      const gameData = {
+        id: Date.now().toString(),
+        name: saveName || `Case: ${currentCase.title}`,
+        timestamp: new Date().toLocaleString(),
+        currentCase,
+        sessionId,
+        conversations,
+        investigationNotes,
+        selectedEvidence,
+        theory,
+        analysis,
+        gameState
+      };
 
-    const updatedSaves = [...savedGames, gameData];
-    setSavedGames(updatedSaves);
-    localStorage.setItem('detective_saved_games', JSON.stringify(updatedSaves));
-    
-    alert(`Game saved as: ${gameData.name}`);
-    setShowSaveLoad(false);
+      const updatedSaves = [...savedGames, gameData];
+      
+      // Update localStorage first
+      localStorage.setItem('detective_saved_games', JSON.stringify(updatedSaves));
+      
+      // Then update state
+      setSavedGames(updatedSaves);
+      
+      alert(`✅ Game saved successfully as: ${gameData.name}`);
+      setShowSaveLoad(false);
+      
+      console.log('Game saved:', gameData.name);
+      console.log('Total saves:', updatedSaves.length);
+    } catch (error) {
+      console.error('Error saving game:', error);
+      alert('❌ Failed to save game. Please try again.');
+    }
   };
 
   // Load a saved game
