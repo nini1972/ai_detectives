@@ -136,10 +136,17 @@ function App() {
 
   if (gameState === 'menu' || !currentCase) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900">
-        <div className="container mx-auto px-4 py-8">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+        {/* Hero Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1652985808809-08b53267628b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwyfHxub2lyJTIwZGV0ZWN0aXZlfGVufDB8fHx8MTc0ODU5MDIxOHww&ixlib=rb-4.1.0&q=85)'
+          }}
+        />
+        <div className="relative z-10 container mx-auto px-4 py-8">
           <div className="text-center">
-            <h1 className="text-6xl font-bold text-white mb-4 tracking-wide">
+            <h1 className="text-6xl font-bold text-white mb-4 tracking-wide gradient-text">
               🕵️ DUAL-AI DETECTIVE
             </h1>
             <p className="text-xl text-blue-200 mb-8 max-w-3xl mx-auto">
@@ -147,22 +154,22 @@ function App() {
               OpenAI creates the story, Claude analyzes the logic. Every case is unique.
             </p>
             
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 max-w-4xl mx-auto mb-8">
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 max-w-4xl mx-auto mb-8 border border-white/20">
               <h2 className="text-2xl font-bold text-white mb-6">🚀 Revolutionary Features</h2>
               <div className="grid md:grid-cols-2 gap-6 text-left">
-                <div className="bg-blue-500/20 rounded-lg p-4">
+                <div className="bg-blue-500/20 rounded-lg p-4 hover-glow">
                   <h3 className="text-lg font-semibold text-blue-300 mb-2">🎭 Storyteller AI (OpenAI)</h3>
                   <p className="text-blue-100">Creates rich narratives, develops characters, and brings suspects to life in natural conversations</p>
                 </div>
-                <div className="bg-purple-500/20 rounded-lg p-4">
+                <div className="bg-purple-500/20 rounded-lg p-4 hover-glow">
                   <h3 className="text-lg font-semibold text-purple-300 mb-2">🧠 Logic AI (Claude)</h3>
                   <p className="text-purple-100">Analyzes evidence, detects contradictions, and provides logical deduction assistance</p>
                 </div>
-                <div className="bg-green-500/20 rounded-lg p-4">
+                <div className="bg-green-500/20 rounded-lg p-4 hover-glow">
                   <h3 className="text-lg font-semibold text-green-300 mb-2">🎲 Dynamic Cases</h3>
                   <p className="text-green-100">Every mystery is procedurally generated with unique characters, evidence, and solutions</p>
                 </div>
-                <div className="bg-orange-500/20 rounded-lg p-4">
+                <div className="bg-orange-500/20 rounded-lg p-4 hover-glow">
                   <h3 className="text-lg font-semibold text-orange-300 mb-2">💬 Natural Investigation</h3>
                   <p className="text-orange-100">Ask suspects anything using natural language - no limited dialogue trees</p>
                 </div>
@@ -172,10 +179,25 @@ function App() {
             <button
               onClick={generateNewCase}
               disabled={loading}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 btn-primary shadow-lg"
             >
               {loading ? '🔮 Generating Mystery...' : '🎯 Start New Investigation'}
             </button>
+            
+            <div className="mt-12 text-center">
+              <h3 className="text-lg font-semibold text-white mb-4">🎮 What Makes This Special?</h3>
+              <div className="flex justify-center space-x-8 text-sm">
+                <div className="ai-badge storyteller">
+                  <span>🎭</span> Storyteller AI
+                </div>
+                <div className="text-white">+</div>
+                <div className="ai-badge logic">
+                  <span>🧠</span> Logic AI
+                </div>
+                <div className="text-white">=</div>
+                <div className="text-yellow-300 font-bold">Revolutionary Experience</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
