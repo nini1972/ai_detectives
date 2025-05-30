@@ -261,18 +261,47 @@ Return ONLY valid JSON with this exact structure:
         """Have a character respond to questioning using Storyteller AI"""
         await self.initialize_storyteller(session_id)
         
-        # Get case data (in a real implementation, fetch from database)
-        prompt = f"""You are roleplaying as {character_name} in a detective mystery. 
+        # Get case details from database
+        case = await db.cases.find_one({"id": case_id})
+        if not case:
+            return "Error: Case information not available."
         
+        # Find the character details
+        character = None
+        for char in case["characters"]:
+            if char["name"] == character_name:
+                character = char
+                break
+        
+        if not character:
+            return "Error: Character not found."
+        
+        prompt = f"""You are roleplaying as {character_name} in the detective mystery "{case['title']}".
+
+CHARACTER CONTEXT:
+- Name: {character['name']}
+- Description: {character['description']}
+- Background: {character['background']}
+- Your alibi: {character['alibi']}
+- Possible motive: {character.get('motive', 'No clear motive')}
+- Are you the culprit: {'Yes' if character.get('is_culprit', False) else 'No'}
+
+CASE CONTEXT:
+- Victim: {case['victim_name']}
+- Setting: {case['setting']}
+- Crime scene: {case['crime_scene_description']}
+
 The detective is asking you: "{question}"
 
 Respond in character with:
-- Personality consistent with your background
-- Potential nervousness or defensiveness if guilty
-- Helpful information but with possible evasions
-- Realistic dialogue that advances the investigation
+- Personality consistent with your background and description
+- Show appropriate emotions (nervousness if guilty, concern if innocent)
+- Provide helpful information but with realistic evasions if you're hiding something
+- Stay true to your alibi and background
+- If you're the culprit, be subtle - don't confess easily but show slight nervousness
+- If innocent, be helpful but may have your own concerns or secrets
 
-Keep responses conversational and under 150 words."""
+Keep responses conversational, realistic, and under 150 words. Make it feel like a real interrogation."""
 
         response = await self.storyteller_ai.send_message(UserMessage(text=prompt))
         return response
