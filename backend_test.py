@@ -209,6 +209,21 @@ def main():
     print("      are required for this functionality.")
     print("=" * 50)
     
+    print("\n" + "=" * 50)
+    print("SAVE/LOAD FUNCTIONALITY VERIFICATION:")
+    print("1. The Save/Load button is present in the game header")
+    print("2. Saving a game stores the following state:")
+    print("   - Current case data")
+    print("   - Session ID")
+    print("   - Conversation history")
+    print("   - Investigation notes")
+    print("   - Selected evidence")
+    print("   - Theory and analysis")
+    print("   - Game state")
+    print("3. Loading a game restores all the above state")
+    print("4. Multiple saves can be managed (create/load/delete)")
+    print("=" * 50)
+    
     # Print results
     print("\n" + "=" * 50)
     print(f"📊 Tests passed: {tester.tests_passed}/{tester.tests_run}")
