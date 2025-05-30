@@ -19,6 +19,67 @@ function App() {
   const [savedGames, setSavedGames] = useState([]);
   const [showSaveLoad, setShowSaveLoad] = useState(false);
 
+  // Load saved games from localStorage on component mount
+  useEffect(() => {
+    const saved = localStorage.getItem('detective_saved_games');
+    if (saved) {
+      setSavedGames(JSON.parse(saved));
+    }
+  }, []);
+
+  // Save current game state
+  const saveGame = (saveName) => {
+    if (!currentCase) {
+      alert('No active case to save!');
+      return;
+    }
+
+    const gameData = {
+      id: Date.now().toString(),
+      name: saveName || `Case: ${currentCase.title}`,
+      timestamp: new Date().toLocaleString(),
+      currentCase,
+      sessionId,
+      conversations,
+      investigationNotes,
+      selectedEvidence,
+      theory,
+      analysis,
+      gameState
+    };
+
+    const updatedSaves = [...savedGames, gameData];
+    setSavedGames(updatedSaves);
+    localStorage.setItem('detective_saved_games', JSON.stringify(updatedSaves));
+    
+    alert(`Game saved as: ${gameData.name}`);
+    setShowSaveLoad(false);
+  };
+
+  // Load a saved game
+  const loadGame = (saveData) => {
+    setCurrentCase(saveData.currentCase);
+    setSessionId(saveData.sessionId);
+    setConversations(saveData.conversations);
+    setInvestigationNotes(saveData.investigationNotes);
+    setSelectedEvidence(saveData.selectedEvidence);
+    setTheory(saveData.theory);
+    setAnalysis(saveData.analysis);
+    setGameState(saveData.gameState);
+    setShowSaveLoad(false);
+    
+    alert(`Loaded: ${saveData.name}`);
+  };
+
+  // Delete a saved game
+  const deleteSave = (saveId) => {
+    if (confirm('Are you sure you want to delete this saved game?')) {
+      const updatedSaves = savedGames.filter(save => save.id !== saveId);
+      setSavedGames(updatedSaves);
+      localStorage.setItem('detective_saved_games', JSON.stringify(updatedSaves));
+    }
+  };
+
   const generateNewCase = async () => {
     setLoading(true);
     try {
