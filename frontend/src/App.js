@@ -305,7 +305,6 @@ function App() {
         {/* Save/Load Modal for Homepage */}
         {showSaveLoad && (
           <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
-            {console.log('Rendering Save/Load modal from homepage')}
             <div className="bg-gray-800 rounded-xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
               <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
                 💾 Load Saved Games
