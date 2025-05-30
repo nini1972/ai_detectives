@@ -752,7 +752,8 @@ async def question_character(request: QuestionRequest):
         response_data = {
             "character_name": character["name"], 
             "response": result["response"],
-            "new_characters_discovered": []
+            "new_characters_discovered": [],
+            "visual_scene_generated": None
         }
         
         # Process any new character mentions
@@ -778,6 +779,26 @@ async def question_character(request: QuestionRequest):
                         "discovered_through": character["name"],
                         "context": mention["context"]
                     })
+        
+        # Check if response contains visual descriptions that could be turned into scenes
+        response_text = result["response"].lower()
+        visual_triggers = ["i saw", "i witnessed", "there was", "i noticed", "i remember seeing", "picture this", "imagine"]
+        
+        if any(trigger in response_text for trigger in visual_triggers) and len(result["response"]) > 50:
+            try:
+                # Generate visual scene from testimony
+                visual_scene = await ai_service.generate_visual_scene(
+                    request.case_id,
+                    f"{character['name']} testified: {result['response']}",
+                    "testimony",
+                    character["name"]
+                )
+                
+                if visual_scene:
+                    response_data["visual_scene_generated"] = visual_scene.model_dump()
+                    
+            except Exception as e:
+                print(f"Error generating visual scene from testimony: {e}")
         
         return response_data
         
