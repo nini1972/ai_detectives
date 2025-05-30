@@ -232,7 +232,13 @@ function App() {
           timestamp: Date.now()
         };
         
-        setVisualSceneNotifications(prev => [...prev, sceneNotification]);
+        console.log('Adding scene notification:', sceneNotification);
+        setVisualSceneNotifications(prev => {
+          console.log('Previous notifications:', prev);
+          const newNotifications = [...prev, sceneNotification];
+          console.log('New notifications:', newNotifications);
+          return newNotifications;
+        });
         
         // Auto-dismiss after 8 seconds
         setTimeout(() => {
@@ -240,6 +246,8 @@ function App() {
             prev.filter(n => n.id !== sceneNotification.id)
           );
         }, 8000);
+      } else {
+        console.log('No visual scene generated in response');
       }
       
       setQuestion('');
