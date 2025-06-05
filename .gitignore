@@ -29,7 +29,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-# .env*.local
+.env
+.env.local
+.env*.local
 *token.json*
 # vercel
 .vercel
