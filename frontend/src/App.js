@@ -1,27 +1,52 @@
+/**
+ * Dual-AI Detective Game - Main React Component
+ * 
+ * This component implements the frontend for the world's first dual-AI detective game.
+ * Features include:
+ * - Dynamic character discovery through AI conversation analysis
+ * - Real-time visual scene generation from testimony
+ * - Dual-AI integration (OpenAI + Claude) for storytelling and logic
+ * - Complete save/load game state management
+ * - Auto-refresh system for visual content updates
+ * 
+ * Author: AI-Generated (Claude-3.5-Sonnet) with human guidance
+ * License: Proprietary
+ */
+
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+// Backend URL from environment variables
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 function App() {
+  // Core game state
   const [currentCase, setCurrentCase] = useState(null);
   const [sessionId, setSessionId] = useState(null);
   const [loading, setLoading] = useState(false);
+  
+  // Investigation state
   const [activeCharacter, setActiveCharacter] = useState(null);
   const [question, setQuestion] = useState('');
   const [conversations, setConversations] = useState({});
   const [selectedEvidence, setSelectedEvidence] = useState([]);
   const [theory, setTheory] = useState('');
   const [analysis, setAnalysis] = useState('');
-  const [gameState, setGameState] = useState('menu'); // menu, playing, analysis
   const [investigationNotes, setInvestigationNotes] = useState('');
+  
+  // UI state
+  const [gameState, setGameState] = useState('menu'); // menu, playing, analysis
   const [showContextPanel, setShowContextPanel] = useState(false);
-  const [savedGames, setSavedGames] = useState([]);
   const [showSaveLoad, setShowSaveLoad] = useState(false);
-  const [newCharacterNotifications, setNewCharacterNotifications] = useState([]);
-  const [visualSceneNotifications, setVisualSceneNotifications] = useState([]);
+  
+  // Revolutionary features state
+  const [newCharacterNotifications, setNewCharacterNotifications] = useState([]); // Dynamic character discovery
+  const [visualSceneNotifications, setVisualSceneNotifications] = useState([]); // AI visual generation
   const [showVisualGallery, setShowVisualGallery] = useState(false);
   const [imageLoadingStates, setImageLoadingStates] = useState(new Set());
+  
+  // Save/load game state
+  const [savedGames, setSavedGames] = useState([]);
 
   // Load saved games from localStorage on component mount
   useEffect(() => {
