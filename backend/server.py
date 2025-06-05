@@ -1,3 +1,18 @@
+#!/usr/bin/env python3
+"""
+Dual-AI Detective Game Backend
+
+This FastAPI server implements the world's first dual-AI detective game with:
+- OpenAI GPT-4 for creative storytelling and character generation
+- Anthropic Claude for logical analysis and deduction assistance  
+- FAL.AI for visual scene generation from testimony
+- Dynamic character discovery through conversation analysis
+- Real-time visual testimony generation
+
+Author: AI-Generated (Claude-3.5-Sonnet) with human guidance
+License: Proprietary
+"""
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -12,9 +27,15 @@ from emergentintegrations.llm.chat import LlmChat, UserMessage
 import fal_client
 import json
 
+# Load environment variables
 load_dotenv()
 
-app = FastAPI()
+# Initialize FastAPI app
+app = FastAPI(
+    title="Dual-AI Detective Game API",
+    description="Revolutionary detective game with dual-AI intelligence and visual testimony generation",
+    version="1.0.0"
+)
 
 # CORS middleware
 app.add_middleware(
