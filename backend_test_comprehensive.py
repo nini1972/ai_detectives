@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 
 class DetectiveGameTester:
-    def __init__(self, base_url="https://52adacca-3bd6-46f3-bde1-2343dfdbb816.preview.emergentagent.com"):
+    def __init__(self, base_url="https://4dcd4447-35b5-4e96-9af8-52ff04642a84.preview.emergentagent.com"):
         self.base_url = base_url
         self.tests_run = 0
         self.tests_passed = 0
